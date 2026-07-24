@@ -1,3 +1,8 @@
+/* =========================
+   Global
+========================= */
+
+
 *{
     margin:0;
     padding:0;
@@ -5,218 +10,775 @@
 }
 
 
+html{
+
+    scroll-behavior:smooth;
+    scroll-snap-type:y mandatory;
+
+}
+
+
 body{
 
+    background:#f7f2e8;
+
+    color:#332b25;
+
     font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
     "Microsoft YaHei",
+    "PingFang SC",
+    Arial,
     sans-serif;
 
-    color:#1d1d1f;
-
-    background:#ffffff;
-
-}
-
-
-.container{
-
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:0 40px;
+    overflow-x:hidden;
 
 }
 
 
 
-nav{
+/* =========================
+   Page Layout
+========================= */
+
+
+.page{
+
+    height:100vh;
+
+    scroll-snap-align:start;
 
     display:flex;
 
-    justify-content:space-between;
+    justify-content:center;
 
     align-items:center;
 
-    padding:35px 0;
+    position:relative;
 
 }
 
 
 
-.logo{
+.paper{
 
-    font-size:22px;
 
-    font-weight:600;
+    width:80vw;
+
+    max-width:900px;
+
+    height:85vh;
+
+
+    background:
+
+    linear-gradient(
+    rgba(255,255,255,.7),
+    rgba(255,255,255,.7)
+    );
+
+
+    border:1px solid #eee2d0;
+
+
+    position:relative;
+
+
+    padding:60px;
+
+
+    overflow:hidden;
+
+
+    box-shadow:
+
+    0 15px 40px rgba(80,60,30,.08);
+
 
 }
 
 
 
-nav a{
+/* 手账网格纹理 */
 
-    margin-left:30px;
 
-    color:#666;
+.paper::before{
 
-    text-decoration:none;
+
+    content:"";
+
+
+    position:absolute;
+
+    inset:0;
+
+
+    background-image:
+
+    linear-gradient(
+    rgba(180,150,100,.08) 1px,
+    transparent 1px
+    ),
+
+    linear-gradient(
+    90deg,
+    rgba(180,150,100,.08) 1px,
+    transparent 1px
+    );
+
+
+    background-size:
+
+    25px 25px;
+
+
+    pointer-events:none;
+
 
 }
 
 
 
-.hero{
 
-    padding:120px 0;
+
+/* =========================
+   Navigation
+========================= */
+
+
+.navigation{
+
+
+    position:fixed;
+
+    right:40px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+
+    z-index:10;
+
+
+}
+
+
+.navigation div{
+
+
+    margin:18px 0;
+
+    color:#b7aa99;
+
+    font-size:14px;
+
+
+}
+
+
+.navigation .active{
+
+
+    color:#6b4f32;
+
+    font-weight:bold;
+
 
 }
 
 
 
-.hero h1{
 
-    font-size:72px;
 
-    letter-spacing:-3px;
+/* =========================
+   Typography
+========================= */
 
-    font-weight:700;
+
+.date{
+
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    color:#8c7863;
+
 
 }
 
 
 
-.hero h2{
+.title{
 
-    margin-top:25px;
 
-    font-size:32px;
+    position:absolute;
 
-    font-weight:500;
+    left:50%;
 
-    color:#0071e3;
+    top:35%;
+
+    transform:translate(-50%,-50%);
+
+
+    text-align:center;
+
 
 }
 
 
 
-.hero p{
+.title h1{
 
-    margin-top:30px;
 
-    max-width:650px;
+    font-size:54px;
 
-    font-size:22px;
+    font-family:
 
-    line-height:1.6;
+    Georgia,
+    serif;
 
-    color:#6e6e73;
+
+    letter-spacing:2px;
+
 
 }
 
 
 
-.button{
+.title h2{
 
-    display:inline-block;
 
-    margin-top:45px;
+    margin-top:20px;
 
-    padding:14px 28px;
+    font-size:20px;
 
-    background:#0071e3;
+    font-weight:400;
 
-    color:white;
+    color:#806040;
 
-    border-radius:30px;
-
-    text-decoration:none;
 
 }
 
 
-
-section{
-
-    padding:100px 0;
-
-}
 
 
 
 .section-title{
 
-    font-size:48px;
 
-    margin-bottom:50px;
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    color:#8c7863;
+
+
+    margin-bottom:40px;
+
 
 }
+
 
 
 
 .about{
 
-    font-size:22px;
 
-    color:#6e6e73;
+    font-size:17px;
 
-    max-width:800px;
+    line-height:2;
+
+
+    max-width:450px;
+
 
 }
 
 
 
-.project{
+.about ul{
 
-    border-top:1px solid #e5e5e5;
-
-    padding:50px 0;
-
-}
-
-
-
-.project h3{
-
-    font-size:38px;
-
-}
-
-
-
-.project p{
-
-    margin-top:15px;
-
-    color:#6e6e73;
-
-    font-size:20px;
-
-}
-
-
-
-.tag{
-
-    display:inline-block;
 
     margin-top:20px;
 
-    margin-right:10px;
+    padding-left:20px;
 
-    color:#0071e3;
 
 }
 
 
 
-footer{
 
-    padding:50px 0;
+/* =========================
+   Notes
+========================= */
 
-    color:#86868b;
+
+.note{
+
+
+    position:absolute;
+
+
+    bottom:120px;
+
+    left:90px;
+
+
+    background:#fffdf8;
+
+
+    padding:25px;
+
+
+    width:260px;
+
+
+    font-size:15px;
+
+
+    line-height:1.8;
+
+
+    transform:rotate(-3deg);
+
+
+    box-shadow:
+
+    0 8px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.stamp{
+
+
+    position:absolute;
+
+    right:80px;
+
+    top:80px;
+
+
+    border:
+
+    2px solid #9c8060;
+
+
+    padding:20px;
+
+
+    border-radius:50%;
+
+
+    font-size:12px;
+
+
+    transform:rotate(10deg);
+
+
+}
+
+
+
+
+/* =========================
+   Sticky Notes
+========================= */
+
+
+.sticky{
+
+
+    position:absolute;
+
+
+    right:150px;
+
+    top:180px;
+
+
+    width:120px;
+
+    height:120px;
+
+
+    background:#f6df72;
+
+
+    padding:35px 20px;
+
+
+    text-align:center;
+
+
+    transform:rotate(5deg);
+
+
+    box-shadow:
+
+    0 8px 15px rgba(0,0,0,.1);
+
+
+}
+
+
+.sticky.green{
+
+    top:330px;
+
+    background:#cddfbd;
+
+    transform:rotate(-4deg);
+
+}
+
+
+.sticky.pink{
+
+    top:480px;
+
+    background:#f4c8c8;
+
+    transform:rotate(3deg);
+
+}
+
+
+
+
+
+/* =========================
+   Project
+========================= */
+
+
+.project-title{
+
+
+    font-size:42px;
+
+    font-family:Georgia,serif;
+
+
+    margin:30px 0 15px;
+
+
+}
+
+
+
+.tags span{
+
+
+    display:inline-block;
+
+
+    margin-right:15px;
+
+
+    margin-top:25px;
+
+
+    padding:5px 12px;
+
+
+    border-radius:20px;
+
+
+    background:#eee2d0;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+.image-placeholder{
+
+
+    position:absolute;
+
+
+    right:80px;
+
+    bottom:100px;
+
+
+    width:260px;
+
+    height:340px;
+
+
+    background:#ffffff;
+
+
+    border:1px dashed #cbb79b;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    color:#aa9170;
+
+
+    font-size:13px;
+
+
+    transform:rotate(4deg);
+
+
+    box-shadow:
+
+    0 10px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ Thinking Notes
+========================= */
+
+
+.thinking{
+
+
+    width:450px;
+
+
+    padding:35px;
+
+
+    margin:30px;
+
+
+    font-size:18px;
+
+
+    line-height:1.8;
+
+
+    box-shadow:
+
+    0 10px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.thinking.yellow{
+
+    background:#fff1a8;
+
+}
+
+
+.thinking.green{
+
+    background:#d8e8ca;
+
+}
+
+
+.thinking.pink{
+
+    background:#f7cccc;
+
+}
+
+
+
+
+
+
+
+/* =========================
+ End Page
+========================= */
+
+
+.end{
+
+
+    text-align:center;
+
+}
+
+
+.end h1{
+
+
+    font-family:Georgia,serif;
+
+    font-size:42px;
+
+
+}
+
+
+
+.end h2{
+
+
+    margin:20px;
+
+
+    font-weight:400;
+
+
+}
+
+
+
+.end p{
+
+
+    margin-top:60px;
+
+    line-height:2;
+
+
+}
+
+
+
+.contact{
+
+
+    margin-top:80px;
+
+    line-height:2;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ Animation
+========================= */
+
+
+.fade{
+
+
+    opacity:0;
+
+
+    transform:translateY(40px);
+
+
+    transition:
+
+    all .8s ease;
+
+
+}
+
+
+
+.show{
+
+
+    opacity:1;
+
+
+    transform:translateY(0);
+
+
+}
+
+
+.delay1{
+
+    transition-delay:.3s;
+
+}
+
+
+
+.page-number{
+
+
+    position:absolute;
+
+
+    right:40px;
+
+    bottom:30px;
+
+
+    color:#b29b7d;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+/* Floating */
+
+.stamp,
+.sticky,
+.image-placeholder{
+
+
+    animation:
+
+    float 5s ease-in-out infinite;
+
+
+}
+
+
+
+@keyframes float{
+
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
 
 }
