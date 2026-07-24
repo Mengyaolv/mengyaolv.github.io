@@ -1,81 +1,37 @@
-// ==============================
-// Page Navigation
-// ==============================
+const pages=document.querySelectorAll(".page");
 
 
-const pages = document.querySelectorAll(".page");
-
-const navItems = document.querySelectorAll(".navigation div");
+const nav=document.querySelectorAll(".navigation div");
 
 
 
-
-// 页面观察器
-
-const observer = new IntersectionObserver(
+const observer=new IntersectionObserver(
 
 (entries)=>{
 
 
-entries.forEach(entry=>{
+entries.forEach(item=>{
 
 
-if(entry.isIntersecting){
+if(item.isIntersecting){
 
 
-const currentIndex =
-
-Array.from(pages)
-
-.indexOf(entry.target);
+item.target.classList.add("active");
 
 
+let index=[...pages].indexOf(item.target);
 
 
 
-// 更新右侧导航
-
-navItems.forEach(item=>{
-
-item.classList.remove("active");
-
-});
+nav.forEach(n=>n.classList.remove("active"));
 
 
 
-if(navItems[currentIndex]){
+if(nav[index]){
 
-navItems[currentIndex]
-
-.classList.add("active");
+nav[index].classList.add("active");
 
 }
-
-
-
-
-
-// 当前页面动画
-
-entry.target
-
-.querySelectorAll(
-
-".paper, .intro, .photo-card, .direction, .sticky-note, .think-card, .hobby-card"
-
-)
-
-.forEach((element,index)=>{
-
-
-element.classList.add("show");
-
-element.style.animationDelay =
-
-`${index * 0.12}s`;
-
-});
-
 
 
 }
@@ -88,89 +44,36 @@ element.style.animationDelay =
 
 {
 
-threshold:0.45
+threshold:0.5
 
 }
 
 );
-
-
 
 
 
 pages.forEach(page=>{
 
-
 observer.observe(page);
 
-
 });
 
 
 
+nav.forEach((item,index)=>{
 
 
+item.onclick=()=>{
 
 
+pages[index].scrollIntoView({
 
-// ==============================
-// Navigation Click
-// ==============================
-
-
-navItems.forEach((item,index)=>{
-
-
-item.addEventListener(
-
-"click",
-
-()=>{
-
-
-pages[index]
-
-.scrollIntoView({
-
-behavior:"smooth",
-
-block:"center"
+behavior:"smooth"
 
 });
 
 
-}
-
-);
-
-
-});
-
-
-
-
-
-
-
-
-// ==============================
-// 页面首次进入动画
-// ==============================
-
-
-window.addEventListener(
-
-"load",
-
-()=>{
-
-
-document
-
-.querySelector(".paper")
-
-.classList.add("show");
-
+};
 
 
 });
