@@ -1,137 +1,148 @@
-/* =========================
-   Global
-========================= */
-
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
 
 html{
 
-    scroll-behavior:smooth;
-    scroll-snap-type:y mandatory;
+scroll-behavior:smooth;
+
+scroll-snap-type:y proximity;
 
 }
+
 
 
 body{
 
-    background:#f7f2e8;
 
-    color:#332b25;
+background:#f7f2e8;
 
-    font-family:
-    "Microsoft YaHei",
-    "PingFang SC",
-    Arial,
-    sans-serif;
 
-    overflow-x:hidden;
+color:#332b25;
+
+
+font-family:
+
+"PingFang SC",
+"Microsoft YaHei",
+sans-serif;
+
+
+overflow-x:hidden;
+
+overscroll-behavior:none;
+
 
 }
 
 
 
-/* =========================
-   Page Layout
-========================= */
 
 
 .page{
 
-    height:100vh;
 
-    scroll-snap-align:start;
+height:100vh;
 
-    display:flex;
 
-    justify-content:center;
+scroll-snap-align:start;
 
-    align-items:center;
 
-    position:relative;
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+position:relative;
+
 
 }
+
+
 
 
 
 .paper{
 
 
-    width:80vw;
-
-    max-width:900px;
-
-    height:85vh;
+width:700px;
 
 
-    background:
-
-    linear-gradient(
-    rgba(255,255,255,.7),
-    rgba(255,255,255,.7)
-    );
+height:850px;
 
 
-    border:1px solid #eee2d0;
+background:#fffdf8;
 
 
-    position:relative;
+border:1px solid #eee2d0;
 
 
-    padding:60px;
+position:relative;
 
 
-    overflow:hidden;
+padding:60px;
 
 
-    box-shadow:
+overflow:hidden;
 
-    0 15px 40px rgba(80,60,30,.08);
+
+box-shadow:
+
+0 8px 25px rgba(70,50,30,.08);
+
+
+animation:
+
+paperIn .8s ease;
 
 
 }
 
 
-
-/* 手账网格纹理 */
 
 
 .paper::before{
 
 
-    content:"";
+content:"";
 
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
-
-
-    background-image:
-
-    linear-gradient(
-    rgba(180,150,100,.08) 1px,
-    transparent 1px
-    ),
-
-    linear-gradient(
-    90deg,
-    rgba(180,150,100,.08) 1px,
-    transparent 1px
-    );
+inset:0;
 
 
-    background-size:
+background-image:
 
-    25px 25px;
+linear-gradient(
+rgba(180,150,100,.08) 1px,
+transparent 1px
+),
+
+linear-gradient(
+90deg,
+rgba(180,150,100,.08) 1px,
+transparent 1px
+);
 
 
-    pointer-events:none;
+
+background-size:
+
+25px 25px;
+
+
+
+pointer-events:none;
 
 
 }
@@ -140,122 +151,236 @@ body{
 
 
 
-/* =========================
-   Navigation
-========================= */
+.paper::after{
+
+
+content:"";
+
+
+position:absolute;
+
+
+left:35px;
+
+
+top:0;
+
+
+width:1px;
+
+
+height:100%;
+
+
+background:#f0ddd0;
+
+
+opacity:.8;
+
+
+}
+
+
+
+
+
+.paper{
+
+background-image:
+
+
+radial-gradient(
+
+rgba(120,90,50,.05) 1px,
+
+transparent 1px
+
+);
+
+
+
+background-size:8px 8px;
+
+
+}
+
+
+
+
 
 
 .navigation{
 
 
-    position:fixed;
-
-    right:40px;
-
-    top:50%;
-
-    transform:translateY(-50%);
+position:fixed;
 
 
-    z-index:10;
+right:45px;
+
+
+top:50%;
+
+
+transform:translateY(-50%);
+
+
+z-index:20;
 
 
 }
+
 
 
 .navigation div{
 
 
-    margin:18px 0;
+display:flex;
 
-    color:#b7aa99;
 
-    font-size:14px;
+align-items:center;
+
+
+gap:12px;
+
+
+margin:22px 0;
+
+
+font-size:14px;
+
+
+color:#b8aa96;
+
+
+transition:.4s;
+
+
+cursor:pointer;
 
 
 }
+
+
+
+.navigation span{
+
+
+width:8px;
+
+
+height:8px;
+
+
+border-radius:50%;
+
+
+background:#d8cbb8;
+
+
+transition:.4s;
+
+
+}
+
 
 
 .navigation .active{
 
 
-    color:#6b4f32;
-
-    font-weight:bold;
+color:#6b4f32;
 
 
 }
 
 
 
+.navigation .active span{
 
 
-/* =========================
-   Typography
-========================= */
+width:12px;
+
+
+height:12px;
+
+
+background:#8b6f47;
+
+
+}
+
+
+
 
 
 .date{
 
 
-    font-size:13px;
+font-size:13px;
 
-    letter-spacing:2px;
 
-    color:#8c7863;
+letter-spacing:2px;
+
+
+color:#8c7863;
 
 
 }
+
+
 
 
 
 .title{
 
 
-    position:absolute;
-
-    left:50%;
-
-    top:35%;
-
-    transform:translate(-50%,-50%);
+position:absolute;
 
 
-    text-align:center;
+top:35%;
+
+
+left:50%;
+
+
+transform:translate(-50%,-50%);
+
+
+text-align:center;
 
 
 }
+
 
 
 
 .title h1{
 
 
-    font-size:54px;
-
-    font-family:
-
-    Georgia,
-    serif;
+font-size:54px;
 
 
-    letter-spacing:2px;
+font-family:
+
+Georgia,
+serif;
 
 
 }
 
 
 
+
+
 .title h2{
 
 
-    margin-top:20px;
+margin-top:20px;
 
-    font-size:20px;
 
-    font-weight:400;
+font-weight:400;
 
-    color:#806040;
+
+color:#806040;
 
 
 }
@@ -267,14 +392,16 @@ body{
 .section-title{
 
 
-    font-size:14px;
-
-    letter-spacing:3px;
-
-    color:#8c7863;
+font-size:14px;
 
 
-    margin-bottom:40px;
+letter-spacing:3px;
+
+
+color:#8c7863;
+
+
+margin-bottom:40px;
 
 
 }
@@ -285,413 +412,313 @@ body{
 .about{
 
 
-    font-size:17px;
-
-    line-height:2;
+font-size:17px;
 
 
-    max-width:450px;
+line-height:2;
 
 
 }
 
 
-
-.about ul{
-
-
-    margin-top:20px;
-
-    padding-left:20px;
-
-
-}
-
-
-
-
-/* =========================
-   Notes
-========================= */
 
 
 .note{
 
 
-    position:absolute;
+position:absolute;
 
 
-    bottom:120px;
-
-    left:90px;
+bottom:120px;
 
 
-    background:#fffdf8;
+left:90px;
 
 
-    padding:25px;
+background:#fffdf8;
 
 
-    width:260px;
+padding:25px;
 
 
-    font-size:15px;
+width:260px;
 
 
-    line-height:1.8;
+line-height:1.8;
 
 
-    transform:rotate(-3deg);
+transform:rotate(-3deg);
 
 
-    box-shadow:
+box-shadow:
 
-    0 8px 20px rgba(0,0,0,.08);
+0 8px 20px rgba(0,0,0,.08);
 
 
 }
+
+
+
 
 
 
 .stamp{
 
 
-    position:absolute;
-
-    right:80px;
-
-    top:80px;
+position:absolute;
 
 
-    border:
-
-    2px solid #9c8060;
+right:80px;
 
 
-    padding:20px;
+top:80px;
 
 
-    border-radius:50%;
+border:
+
+2px solid #9c8060;
 
 
-    font-size:12px;
+padding:20px;
 
 
-    transform:rotate(10deg);
+border-radius:50%;
+
+
+font-size:12px;
+
+
+transform:rotate(10deg);
 
 
 }
 
 
 
-
-/* =========================
-   Sticky Notes
-========================= */
 
 
 .sticky{
 
 
-    position:absolute;
+position:absolute;
 
 
-    right:150px;
-
-    top:180px;
+right:150px;
 
 
-    width:120px;
-
-    height:120px;
+top:180px;
 
 
-    background:#f6df72;
+width:120px;
 
 
-    padding:35px 20px;
+height:120px;
 
 
-    text-align:center;
+background:#f6df72;
 
 
-    transform:rotate(5deg);
+padding:40px 20px;
 
 
-    box-shadow:
+text-align:center;
 
-    0 8px 15px rgba(0,0,0,.1);
+
+transform:rotate(5deg);
 
 
 }
 
 
+
+
 .sticky.green{
 
-    top:330px;
 
-    background:#cddfbd;
+top:340px;
 
-    transform:rotate(-4deg);
+
+background:#cddfbd;
+
 
 }
 
 
 .sticky.pink{
 
-    top:480px;
 
-    background:#f4c8c8;
+top:500px;
 
-    transform:rotate(3deg);
+
+background:#f4c8c8;
+
 
 }
 
 
 
 
-
-/* =========================
-   Project
-========================= */
 
 
 .project-title{
 
 
-    font-size:42px;
-
-    font-family:Georgia,serif;
+font-size:42px;
 
 
-    margin:30px 0 15px;
+font-family:Georgia,serif;
+
+
+margin:40px 0 15px;
 
 
 }
+
 
 
 
 .tags span{
 
 
-    display:inline-block;
+display:inline-block;
 
 
-    margin-right:15px;
+padding:5px 12px;
 
 
-    margin-top:25px;
+margin-top:25px;
 
 
-    padding:5px 12px;
+margin-right:10px;
 
 
-    border-radius:20px;
+background:#eee2d0;
 
 
-    background:#eee2d0;
+border-radius:20px;
 
 
-    font-size:13px;
+font-size:13px;
 
 
 }
+
 
 
 
 .image-placeholder{
 
 
-    position:absolute;
+position:absolute;
 
 
-    right:80px;
-
-    bottom:100px;
+right:80px;
 
 
-    width:260px;
-
-    height:340px;
+bottom:100px;
 
 
-    background:#ffffff;
+width:260px;
 
 
-    border:1px dashed #cbb79b;
+height:340px;
 
 
-    display:flex;
+background:white;
 
 
-    justify-content:center;
-
-    align-items:center;
+border:1px dashed #cbb79b;
 
 
-    color:#aa9170;
+display:flex;
 
 
-    font-size:13px;
+align-items:center;
 
 
-    transform:rotate(4deg);
+justify-content:center;
 
 
-    box-shadow:
+font-size:13px;
 
-    0 10px 20px rgba(0,0,0,.08);
+
+color:#aa9170;
+
+
+transform:rotate(4deg);
+
+
+box-shadow:
+
+0 10px 20px rgba(0,0,0,.08);
 
 
 }
 
 
 
-
-
-
-
-/* =========================
- Thinking Notes
-========================= */
 
 
 .thinking{
 
 
-    width:450px;
+width:420px;
 
 
-    padding:35px;
+padding:30px;
 
 
-    margin:30px;
+margin:30px;
 
 
-    font-size:18px;
+line-height:1.8;
 
 
-    line-height:1.8;
+box-shadow:
 
-
-    box-shadow:
-
-    0 10px 20px rgba(0,0,0,.08);
+0 10px 20px rgba(0,0,0,.08);
 
 
 }
 
 
 
-.thinking.yellow{
+.yellow{
 
-    background:#fff1a8;
-
-}
-
-
-.thinking.green{
-
-    background:#d8e8ca;
+background:#fff1a8;
 
 }
 
 
-.thinking.pink{
+.green{
 
-    background:#f7cccc;
-
-}
-
-
-
-
-
-
-
-/* =========================
- End Page
-========================= */
-
-
-.end{
-
-
-    text-align:center;
+background:#d8e8ca;
 
 }
 
 
-.end h1{
+.pink{
 
-
-    font-family:Georgia,serif;
-
-    font-size:42px;
-
+background:#f7cccc;
 
 }
 
 
 
-.end h2{
-
-
-    margin:20px;
-
-
-    font-weight:400;
-
-
-}
-
-
-
-.end p{
-
-
-    margin-top:60px;
-
-    line-height:2;
-
-
-}
-
-
-
-.contact{
-
-
-    margin-top:80px;
-
-    line-height:2;
-
-
-}
-
-
-
-
-
-
-
-/* =========================
- Animation
-========================= */
 
 
 .fade{
 
 
-    opacity:0;
+opacity:0;
 
 
-    transform:translateY(40px);
+transform:translateY(35px);
 
 
-    transition:
+transition:
 
-    all .8s ease;
+all .8s ease;
 
 
 }
@@ -701,38 +728,46 @@ body{
 .show{
 
 
-    opacity:1;
+opacity:1;
 
 
-    transform:translateY(0);
+transform:translateY(0);
 
 
 }
+
 
 
 .delay1{
 
-    transition-delay:.3s;
+transition-delay:.3s;
 
 }
+
+
+.delay2{
+
+transition-delay:.6s;
+
+}
+
+
 
 
 
 .page-number{
 
 
-    position:absolute;
+position:absolute;
 
 
-    right:40px;
-
-    bottom:30px;
+bottom:30px;
 
 
-    color:#b29b7d;
+right:40px;
 
 
-    font-size:13px;
+color:#b29b7d;
 
 
 }
@@ -741,16 +776,14 @@ body{
 
 
 
-/* Floating */
-
 .stamp,
 .sticky,
 .image-placeholder{
 
 
-    animation:
+animation:
 
-    float 5s ease-in-out infinite;
+float 5s ease-in-out infinite;
 
 
 }
@@ -760,25 +793,43 @@ body{
 @keyframes float{
 
 
-    0%{
+50%{
 
-        transform:translateY(0);
+transform:translateY(-8px);
 
-    }
-
-
-    50%{
-
-        transform:translateY(-8px);
-
-    }
+}
 
 
-    100%{
+}
 
-        transform:translateY(0);
 
-    }
+
+
+@keyframes paperIn{
+
+
+from{
+
+
+opacity:0;
+
+
+transform:translateY(40px) scale(.98);
+
+
+}
+
+
+to{
+
+
+opacity:1;
+
+
+transform:none;
+
+
+}
 
 
 }
