@@ -7,6 +7,7 @@ document.querySelectorAll(".navigation div");
 
 
 
+
 const observer =
 new IntersectionObserver(
 
@@ -17,21 +18,6 @@ entries.forEach(entry=>{
 
 
 if(entry.isIntersecting){
-
-
-
-const elements =
-entry.target.querySelectorAll(".fade");
-
-
-elements.forEach(el=>{
-
-
-el.classList.add("show");
-
-
-});
-
 
 
 const index =
@@ -47,6 +33,7 @@ item.classList.remove("active");
 });
 
 
+
 if(nav[index]){
 
 nav[index]
@@ -55,7 +42,21 @@ nav[index]
 }
 
 
+
+entry.target
+.querySelectorAll(".fade")
+.forEach(el=>{
+
+
+el.classList.add("show");
+
+
+});
+
+
+
 }
+
 
 
 });
@@ -63,9 +64,10 @@ nav[index]
 
 },
 
-
 {
-threshold:0.5
+
+threshold:0.55
+
 }
 
 
@@ -74,9 +76,12 @@ threshold:0.5
 
 
 
+
+
 pages.forEach(page=>{
 
 observer.observe(page);
+
 
 });
 
@@ -84,14 +89,15 @@ observer.observe(page);
 
 
 
-/* 点击页码跳转 */
 
 
 nav.forEach((item,index)=>{
 
 
 item.addEventListener(
+
 "click",
+
 ()=>{
 
 
@@ -103,7 +109,9 @@ behavior:"smooth"
 });
 
 
-});
+}
+
+);
 
 
 });
