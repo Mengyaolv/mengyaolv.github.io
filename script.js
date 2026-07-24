@@ -1,23 +1,18 @@
-// =======================
+// ==============================
 // Page Navigation
-// =======================
+// ==============================
 
 
-const pages =
-document.querySelectorAll(".page");
+const pages = document.querySelectorAll(".page");
 
-
-const nav =
-document.querySelectorAll(".navigation div");
+const navItems = document.querySelectorAll(".navigation div");
 
 
 
 
-// 页面观察
+// 页面观察器
 
-const observer =
-
-new IntersectionObserver(
+const observer = new IntersectionObserver(
 
 (entries)=>{
 
@@ -28,8 +23,7 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){
 
 
-
-const index =
+const currentIndex =
 
 Array.from(pages)
 
@@ -38,30 +32,54 @@ Array.from(pages)
 
 
 
-nav.forEach(item=>{
 
+// 更新右侧导航
+
+navItems.forEach(item=>{
 
 item.classList.remove("active");
-
 
 });
 
 
 
-if(nav[index]){
+if(navItems[currentIndex]){
 
-
-nav[index]
+navItems[currentIndex]
 
 .classList.add("active");
 
-
 }
 
 
 
 
+
+// 当前页面动画
+
+entry.target
+
+.querySelectorAll(
+
+".paper, .intro, .photo-card, .direction, .sticky-note, .think-card, .hobby-card"
+
+)
+
+.forEach((element,index)=>{
+
+
+element.classList.add("show");
+
+element.style.animationDelay =
+
+`${index * 0.12}s`;
+
+});
+
+
+
 }
+
 
 });
 
@@ -70,7 +88,7 @@ nav[index]
 
 {
 
-threshold:0.6
+threshold:0.45
 
 }
 
@@ -95,13 +113,12 @@ observer.observe(page);
 
 
 
-
-// =======================
+// ==============================
 // Navigation Click
-// =======================
+// ==============================
 
 
-nav.forEach((item,index)=>{
+navItems.forEach((item,index)=>{
 
 
 item.addEventListener(
@@ -115,13 +132,14 @@ pages[index]
 
 .scrollIntoView({
 
-behavior:"smooth"
+behavior:"smooth",
+
+block:"center"
 
 });
 
 
 }
-
 
 );
 
@@ -135,58 +153,9 @@ behavior:"smooth"
 
 
 
-
-// =======================
-// Name Typing Animation
-// =======================
-
-
-const nameElement =
-
-document.getElementById("name");
-
-
-
-const nameText =
-
-"Mengyao Lv";
-
-
-
-let index = 0;
-
-
-
-function typing(){
-
-
-if(index < nameText.length){
-
-
-nameElement.innerHTML +=
-
-nameText[index];
-
-
-index++;
-
-
-setTimeout(
-
-typing,
-
-150
-
-);
-
-
-}
-
-
-}
-
-
-
+// ==============================
+// 页面首次进入动画
+// ==============================
 
 
 window.addEventListener(
@@ -196,15 +165,12 @@ window.addEventListener(
 ()=>{
 
 
-setTimeout(
+document
 
-typing,
+.querySelector(".paper")
 
-700
-
-);
+.classList.add("show");
 
 
-}
 
-);
+});
