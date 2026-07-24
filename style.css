@@ -1,13 +1,11 @@
 /* =========================
-   Global
+ Reset
 ========================= */
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
 
 
@@ -15,10 +13,9 @@ html{
 
 scroll-behavior:smooth;
 
-scroll-snap-type:y proximity;
+scroll-snap-type:y mandatory;
 
 }
-
 
 
 body{
@@ -28,19 +25,17 @@ background:#f3ede3;
 color:#342d27;
 
 font-family:
-
 "PingFang SC",
 "Microsoft YaHei",
 sans-serif;
-
-overflow-x:hidden;
 
 }
 
 
 
+
 /* =========================
-   Page Layout
+ Page
 ========================= */
 
 
@@ -48,13 +43,13 @@ overflow-x:hidden;
 
 height:100vh;
 
-scroll-snap-align:start;
-
 display:flex;
 
 justify-content:center;
 
 align-items:center;
+
+scroll-snap-align:start;
 
 }
 
@@ -71,22 +66,21 @@ height:620px;
 background:#fffdf8;
 
 
-border-radius:18px;
+border-radius:22px;
 
 
 position:relative;
 
 
+padding:55px 75px;
+
+
 overflow:hidden;
-
-
-padding:55px 70px;
-
 
 
 box-shadow:
 
-0 20px 50px rgba(70,50,30,.08);
+0 25px 60px rgba(60,40,20,.08);
 
 
 }
@@ -94,6 +88,7 @@ box-shadow:
 
 
 /* 纸张纹理 */
+
 
 .paper::before{
 
@@ -110,27 +105,32 @@ inset:0;
 background-image:
 
 radial-gradient(
-rgba(130,100,70,.12) 0.7px,
+rgba(130,100,70,.15) .7px,
 transparent .7px
 );
 
 
-background-size:
-
-7px 7px;
+background-size:8px 8px;
 
 
-opacity:.25;
-
-
-pointer-events:none;
+opacity:.18;
 
 
 }
 
 
 
-/* 左侧装订线 */
+.paper>*{
+
+position:relative;
+
+z-index:2;
+
+}
+
+
+
+/* 左侧线 */
 
 
 .paper::after{
@@ -157,18 +157,13 @@ width:1px;
 background:#ead8c2;
 
 
-opacity:.8;
-
-
 }
 
 
 
 
-
-
 /* =========================
-Navigation
+ Navigation
 ========================= */
 
 
@@ -177,21 +172,15 @@ Navigation
 
 position:fixed;
 
-
-right:50px;
-
+right:55px;
 
 top:50%;
 
-
 transform:translateY(-50%);
 
-
-z-index:99;
-
+z-index:100;
 
 }
-
 
 
 .navigation div{
@@ -199,26 +188,21 @@ z-index:99;
 
 display:flex;
 
-
 align-items:center;
 
+gap:15px;
 
-gap:12px;
 
-
-margin:25px 0;
+margin:26px 0;
 
 
 font-size:14px;
 
 
-color:#c1b29d;
+color:#c9bba7;
 
 
 cursor:pointer;
-
-
-transition:.4s;
 
 
 }
@@ -230,14 +214,14 @@ transition:.4s;
 
 width:8px;
 
-
 height:8px;
-
 
 border-radius:50%;
 
+background:#ddd0bf;
 
-background:#d9cdbd;
+
+transition:.4s;
 
 
 }
@@ -247,13 +231,10 @@ background:#d9cdbd;
 .navigation .active{
 
 
-color:#73553a;
-
-
-font-weight:bold;
-
+color:#76563a;
 
 }
+
 
 
 .navigation .active span{
@@ -261,40 +242,31 @@ font-weight:bold;
 
 width:12px;
 
-
 height:12px;
 
-
-background:#806044;
+background:#76563a;
 
 
 }
-
-
-
 
 
 
 
 /* =========================
- Common
+ Header
 ========================= */
 
 
-.page-title{
+.page-label{
 
 
 font-size:12px;
 
-
 letter-spacing:3px;
 
-
-color:#92785a;
-
+color:#9a7b58;
 
 }
-
 
 
 
@@ -303,21 +275,15 @@ color:#92785a;
 
 position:absolute;
 
-
-right:45px;
-
+right:50px;
 
 bottom:35px;
 
-
 font-size:13px;
-
 
 color:#9d8467;
 
-
 }
-
 
 
 
@@ -325,88 +291,138 @@ color:#9d8467;
 
 
 /* =========================
- PAGE 01
+ Animation System
 ========================= */
 
 
-.page-label{
+.animate{
 
 
-position:absolute;
+opacity:0;
 
 
-top:45px;
+transform:
+
+translateY(25px);
 
 
-left:70px;
+transition:
+
+all .8s cubic-bezier(.2,.8,.2,1);
+
+
+}
+
+
+
+.page.active .animate{
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+.page.active .delay1{
+
+transition-delay:.15s;
+
+}
+
+
+.page.active .delay2{
+
+transition-delay:.3s;
+
+}
+
+
+.page.active .delay3{
+
+transition-delay:.45s;
+
+}
+/* =========================
+ Page 1 - Profile
+========================= */
+
+
+.profile-title{
+
+
+font-family:
+"Times New Roman",
+serif;
+
+
+font-size:54px;
+
+
+letter-spacing:2px;
+
+
+margin-top:55px;
+
+
+}
+
+
+
+.profile-sub{
+
+
+font-size:20px;
+
+
+color:#8a6b48;
+
+
+margin-top:15px;
+
+
+letter-spacing:1px;
+
+
+}
+
+
+
+.info-block{
+
+
+margin-top:55px;
+
+
+line-height:2;
+
+
+font-size:16px;
+
+
+}
+
+
+
+.info-title{
 
 
 font-size:12px;
 
 
-line-height:1.8;
+letter-spacing:3px;
 
 
-letter-spacing:2px;
+color:#a1815e;
 
 
-color:#92785a;
-
-
-}
-
-
-
-
-
-.intro{
-
-
-position:absolute;
-
-
-left:70px;
-
-
-top:140px;
-
-
-}
-
-
-
-.intro h1{
-
-
-font-family:
-
-Georgia,
-serif;
-
-
-font-size:48px;
-
-
-letter-spacing:2px;
-
-
-margin-bottom:15px;
-
-
-}
-
-
-
-.intro h2{
-
-
-font-size:18px;
-
-
-font-weight:400;
-
-
-color:#85694b;
+margin-bottom:8px;
 
 
 }
@@ -417,57 +433,81 @@ color:#85694b;
 .education{
 
 
-margin-top:40px;
-
-
 display:flex;
 
 
 flex-direction:column;
 
 
-gap:25px;
+gap:28px;
 
 
 }
 
 
 
-.education span{
+.bottom-area{
 
 
-font-size:11px;
+position:absolute;
 
 
-letter-spacing:2px;
+left:75px;
 
 
-color:#a0825b;
+bottom:65px;
 
 
-}
+display:flex;
 
 
-
-.education p{
-
-
-font-size:14px;
-
-
-line-height:1.8;
-
-
-margin-top:6px;
+gap:120px;
 
 
 }
 
 
 
+.interest,
+.goal{
 
 
-/* 照片 */
+font-size:15px;
+
+
+line-height:2;
+
+
+}
+
+
+
+.interest h4,
+.goal h4{
+
+
+font-size:12px;
+
+
+font-weight:400;
+
+
+letter-spacing:3px;
+
+
+color:#a1815e;
+
+
+margin-bottom:8px;
+
+
+}
+
+
+
+
+
+/* photo polaroid */
 
 
 .photo-card{
@@ -479,7 +519,7 @@ position:absolute;
 right:160px;
 
 
-top:100px;
+top:110px;
 
 
 width:250px;
@@ -488,21 +528,24 @@ width:250px;
 height:320px;
 
 
-background:#fff;
+background:white;
 
 
-padding:12px;
-
-
-transform:rotate(4deg);
+padding:15px;
 
 
 box-shadow:
 
-0 15px 35px rgba(0,0,0,.12);
+0 20px 35px rgba(0,0,0,.12);
+
+
+transform:
+
+rotate(5deg);
 
 
 }
+
 
 
 
@@ -523,9 +566,6 @@ object-fit:cover;
 
 
 
-/* 胶带 */
-
-
 .photo-card::before{
 
 
@@ -535,130 +575,25 @@ content:"";
 position:absolute;
 
 
-width:120px;
+width:140px;
 
 
-height:32px;
+height:35px;
 
 
-background:rgba(220,190,140,.65);
+background:#e5cda6;
+
+
+opacity:.8;
 
 
 top:-18px;
 
 
-left:60px;
+left:55px;
 
 
-transform:rotate(-8deg);
-
-
-}
-
-
-
-
-
-.direction{
-
-
-position:absolute;
-
-
-left:70px;
-
-
-bottom:80px;
-
-
-display:flex;
-
-
-gap:90px;
-
-
-}
-
-
-
-.direction h3{
-
-
-font-size:12px;
-
-
-letter-spacing:2px;
-
-
-font-weight:400;
-
-
-color:#967956;
-
-
-}
-
-
-
-.direction p{
-
-
-font-size:14px;
-
-
-line-height:1.9;
-
-
-margin-top:12px;
-
-
-}
-
-
-
-
-
-
-.stamp{
-
-
-position:absolute;
-
-
-right:80px;
-
-
-top:50px;
-
-
-width:80px;
-
-
-height:80px;
-
-
-border-radius:50%;
-
-
-border:1px solid #987b58;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-text-align:center;
-
-
-font-size:10px;
-
-
-color:#806040;
+transform:rotate(-5deg);
 
 
 }
@@ -670,51 +605,118 @@ color:#806040;
 
 
 /* =========================
- PAGE 02
+ Page 2 - About
 ========================= */
 
 
-.about-content{
-
-
-position:absolute;
-
-
-left:70px;
-
-
-top:140px;
-
-
-}
-
-
-
-.about-content h1{
+.about-title{
 
 
 font-family:
-
+"Songti SC",
 serif;
 
 
-font-size:34px;
+font-size:44px;
 
 
 line-height:1.5;
 
 
-font-weight:500;
+margin-top:80px;
 
 
 }
 
 
 
-.about-content p{
+.about-desc{
 
 
-margin-top:30px;
+margin-top:45px;
+
+
+width:430px;
+
+
+font-size:16px;
+
+
+line-height:2.2;
+
+
+}
+
+
+
+.skill-board{
+
+
+position:absolute;
+
+
+right:120px;
+
+
+top:180px;
+
+
+display:flex;
+
+
+gap:25px;
+
+
+}
+
+
+
+
+.skill-card{
+
+
+width:180px;
+
+
+padding:25px;
+
+
+background:#f7efdb;
+
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.05);
+
+
+}
+
+
+
+.skill-card:nth-child(2){
+
+
+background:#edf2df;
+
+
+}
+
+
+
+.skill-card h3{
+
+
+font-size:16px;
+
+
+margin-bottom:18px;
+
+
+}
+
+
+
+.skill-card p{
 
 
 font-size:14px;
@@ -727,113 +729,55 @@ line-height:2;
 
 
 
-.sticky-note{
-
-
-position:absolute;
-
-
-width:180px;
-
-
-height:150px;
-
-
-padding:25px;
-
-
-font-size:13px;
-
-
-line-height:1.8;
-
-
-box-shadow:
-
-0 10px 20px rgba(0,0,0,.08);
-
-
-}
-
-
-
-.note1{
-
-
-right:260px;
-
-
-top:150px;
-
-
-background:#f8edce;
-
-
-}
-
-
-
-
-.note2{
-
-
-right:70px;
-
-
-top:150px;
-
-
-background:#e7efd9;
-
-
-}
-
-
-
-
 
 
 /* =========================
- PAGE 03
+ Page 3 - Project
 ========================= */
 
 
-.project-text{
+
+.project-title{
 
 
-position:absolute;
+font-size:45px;
 
 
-left:70px;
-
-
-top:160px;
-
-
-}
-
-
-
-.project-text h1{
-
-
-font-family:serif;
-
-
-font-size:42px;
+font-family:
+"Songti SC",
+serif;
 
 
 }
 
 
 
-.project-text h3{
+.project-sub{
+
+
+font-size:16px;
 
 
 margin-top:10px;
 
 
-font-weight:400;
+color:#76563a;
+
+
+}
+
+
+
+.project-desc{
+
+
+width:360px;
+
+
+margin-top:45px;
+
+
+line-height:2.2;
 
 
 font-size:16px;
@@ -843,45 +787,36 @@ font-size:16px;
 
 
 
-.project-text p{
+
+.tag-list{
 
 
-margin-top:35px;
+display:flex;
 
 
-font-size:14px;
+gap:15px;
 
 
-line-height:2;
+margin-top:30px;
 
 
 }
 
 
 
-
-.tags span{
-
-
-display:inline-block;
+.tag{
 
 
-margin-right:10px;
+padding:8px 20px;
 
 
-margin-top:25px;
-
-
-padding:5px 14px;
-
-
-background:#eee0c9;
+background:#efe0c4;
 
 
 border-radius:20px;
 
 
-font-size:12px;
+font-size:13px;
 
 
 }
@@ -889,29 +824,40 @@ font-size:12px;
 
 
 
-.product-image{
+.project-image{
 
 
 position:absolute;
 
 
-right:80px;
+right:90px;
 
 
 top:120px;
 
 
-width:480px;
+width:500px;
 
 
-height:330px;
+height:310px;
+
+
+background:white;
+
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.1);
+
+
+overflow:hidden;
 
 
 }
 
 
 
-.product-image img{
+.project-image img{
 
 
 width:100%;
@@ -920,34 +866,47 @@ width:100%;
 height:100%;
 
 
-object-fit:contain;
+object-fit:cover;
 
 
 }
-
-
-
-
-
-
 /* =========================
- PAGE 04
+ Page 4 - Product Thinking
 ========================= */
 
 
 .thinking-title{
 
 
-margin-top:45px;
+font-family:
+"Songti SC",
+serif;
 
 
-font-family:serif;
+font-size:44px;
 
 
-font-size:38px;
+margin-top:65px;
 
 
 }
+
+
+
+.thinking-sub{
+
+
+margin-top:15px;
+
+
+font-size:16px;
+
+
+color:#8c7150;
+
+
+}
+
 
 
 
@@ -957,7 +916,7 @@ font-size:38px;
 display:flex;
 
 
-gap:30px;
+gap:35px;
 
 
 margin-top:80px;
@@ -976,15 +935,35 @@ width:230px;
 height:180px;
 
 
-padding:25px;
-
-
 background:#faf7ef;
+
+
+padding:30px;
 
 
 box-shadow:
 
-0 8px 20px rgba(0,0,0,.06);
+0 15px 30px rgba(0,0,0,.05);
+
+
+transition:.5s;
+
+
+}
+
+
+
+.think-card:hover{
+
+
+transform:
+
+translateY(-8px);
+
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.1);
 
 
 }
@@ -1007,10 +986,13 @@ margin-bottom:20px;
 .think-card p{
 
 
-font-size:13px;
+font-size:14px;
 
 
-line-height:1.8;
+line-height:2;
+
+
+color:#5d5146;
 
 
 }
@@ -1020,23 +1002,39 @@ line-height:1.8;
 
 
 
-
-
 /* =========================
- PAGE 05
+ Page 5 - Hobby
 ========================= */
 
 
-.photo-gallery{
+.hobby-title{
+
+
+font-family:
+"Songti SC",
+serif;
+
+
+font-size:42px;
+
+
+margin-top:55px;
+
+
+}
+
+
+
+.hobby-gallery{
 
 
 display:flex;
 
 
-gap:40px;
+gap:45px;
 
 
-margin-top:60px;
+margin-top:70px;
 
 
 }
@@ -1056,37 +1054,102 @@ text-align:center;
 
 
 
+
 .hobby-card img{
 
 
-width:180px;
+width:190px;
 
 
-height:180px;
+height:190px;
 
 
 object-fit:cover;
 
 
-padding:8px;
+padding:10px;
 
 
-background:white;
+background:#fff;
 
 
 box-shadow:
 
-0 10px 20px rgba(0,0,0,.12);
+0 15px 30px rgba(0,0,0,.12);
 
 
-transform:rotate(-3deg);
+transition:.5s;
 
 
 }
 
 
 
-.hobby-card p{
+.hobby-card:nth-child(1) img{
+
+
+transform:
+
+rotate(-4deg);
+
+
+}
+
+
+.hobby-card:nth-child(2) img{
+
+
+transform:
+
+rotate(3deg);
+
+
+}
+
+
+
+.hobby-card:nth-child(3) img{
+
+
+transform:
+
+rotate(-2deg);
+
+
+}
+
+
+
+
+.hobby-card:hover img{
+
+
+transform:
+
+rotate(0deg)
+
+translateY(-8px);
+
+
+}
+
+
+
+
+.hobby-name{
+
+
+margin-top:20px;
+
+
+font-size:16px;
+
+
+}
+
+
+
+.hobby-desc{
 
 
 font-size:13px;
@@ -1095,32 +1158,42 @@ font-size:13px;
 line-height:1.8;
 
 
-margin-top:15px;
+color:#806c55;
+
+
+margin-top:8px;
 
 
 }
 
 
 
-.quote{
+
+.life-quote{
 
 
 position:absolute;
 
 
-bottom:70px;
+left:75px;
 
 
-left:70px;
+bottom:65px;
 
 
-font-family:serif;
+font-family:
+
+serif;
 
 
-font-size:20px;
+font-size:24px;
+
+
+line-height:1.6;
 
 
 }
+
 
 
 
@@ -1129,30 +1202,35 @@ font-size:20px;
 
 
 /* =========================
- PAGE 06
+ Page 6 - Contact
 ========================= */
 
 
-.contact-page h1{
+.contact-title{
 
 
-margin-top:70px;
+font-family:
+"Songti SC",
+serif;
 
 
-font-family:serif;
+font-size:45px;
 
 
-font-size:38px;
+margin-top:90px;
 
 
 }
 
 
 
-.contact-page>p{
+.contact-sub{
 
 
 margin-top:20px;
+
+
+font-size:18px;
 
 
 color:#806040;
@@ -1165,10 +1243,10 @@ color:#806040;
 .contact-info{
 
 
-margin-top:50px;
+margin-top:55px;
 
 
-font-size:15px;
+font-size:16px;
 
 
 line-height:3;
@@ -1178,19 +1256,36 @@ line-height:3;
 
 
 
+.contact-info div{
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:15px;
+
+
+}
+
+
+
+
 .contact-image{
 
 
 position:absolute;
 
 
-right:120px;
+right:130px;
 
 
 top:140px;
 
 
-width:250px;
+width:260px;
 
 
 height:300px;
@@ -1210,6 +1305,234 @@ height:100%;
 
 
 object-fit:cover;
+
+
+padding:12px;
+
+
+background:white;
+
+
+box-shadow:
+
+0 15px 30px rgba(0,0,0,.12);
+
+
+transform:
+
+rotate(4deg);
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+ Decorative Elements
+========================= */
+
+
+
+.tape{
+
+
+position:absolute;
+
+
+width:120px;
+
+
+height:35px;
+
+
+background:#e7d1ac;
+
+
+opacity:.7;
+
+
+}
+
+
+
+.tape-left{
+
+
+left:100px;
+
+
+top:80px;
+
+
+transform:
+
+rotate(-8deg);
+
+
+}
+
+
+
+.tape-right{
+
+
+right:100px;
+
+
+bottom:90px;
+
+
+transform:
+
+rotate(10deg);
+
+
+}
+
+
+
+
+
+.sticker{
+
+
+position:absolute;
+
+
+font-size:35px;
+
+
+opacity:.8;
+
+
+}
+
+
+
+.star{
+
+
+right:90px;
+
+
+top:90px;
+
+
+}
+
+
+
+
+
+/* =========================
+ Image Loading Animation
+========================= */
+
+
+.photo-card,
+.project-image,
+.hobby-card,
+.contact-image{
+
+
+opacity:0;
+
+
+transform:
+
+translateY(40px);
+
+
+transition:
+
+all .8s ease;
+
+
+}
+
+
+
+.page.active .photo-card,
+.page.active .project-image,
+.page.active .hobby-card,
+.page.active .contact-image{
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+
+/* =========================
+ Mobile
+========================= */
+
+
+@media(max-width:900px){
+
+
+.paper{
+
+
+width:90vw;
+
+
+height:600px;
+
+
+padding:40px;
+
+
+}
+
+
+
+.navigation{
+
+
+display:none;
+
+
+}
+
+
+
+.photo-card{
+
+
+right:60px;
+
+
+width:180px;
+
+
+height:240px;
+
+
+}
+
+
+
+.profile-title{
+
+
+font-size:40px;
+
+
+}
 
 
 }
