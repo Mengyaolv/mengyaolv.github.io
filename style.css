@@ -1,0 +1,222 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Microsoft YaHei",
+    sans-serif;
+
+    color:#1d1d1f;
+
+    background:#ffffff;
+
+}
+
+
+.container{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:0 40px;
+
+}
+
+
+
+nav{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:35px 0;
+
+}
+
+
+
+.logo{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+
+
+nav a{
+
+    margin-left:30px;
+
+    color:#666;
+
+    text-decoration:none;
+
+}
+
+
+
+.hero{
+
+    padding:120px 0;
+
+}
+
+
+
+.hero h1{
+
+    font-size:72px;
+
+    letter-spacing:-3px;
+
+    font-weight:700;
+
+}
+
+
+
+.hero h2{
+
+    margin-top:25px;
+
+    font-size:32px;
+
+    font-weight:500;
+
+    color:#0071e3;
+
+}
+
+
+
+.hero p{
+
+    margin-top:30px;
+
+    max-width:650px;
+
+    font-size:22px;
+
+    line-height:1.6;
+
+    color:#6e6e73;
+
+}
+
+
+
+.button{
+
+    display:inline-block;
+
+    margin-top:45px;
+
+    padding:14px 28px;
+
+    background:#0071e3;
+
+    color:white;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+}
+
+
+
+section{
+
+    padding:100px 0;
+
+}
+
+
+
+.section-title{
+
+    font-size:48px;
+
+    margin-bottom:50px;
+
+}
+
+
+
+.about{
+
+    font-size:22px;
+
+    color:#6e6e73;
+
+    max-width:800px;
+
+}
+
+
+
+.project{
+
+    border-top:1px solid #e5e5e5;
+
+    padding:50px 0;
+
+}
+
+
+
+.project h3{
+
+    font-size:38px;
+
+}
+
+
+
+.project p{
+
+    margin-top:15px;
+
+    color:#6e6e73;
+
+    font-size:20px;
+
+}
+
+
+
+.tag{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    margin-right:10px;
+
+    color:#0071e3;
+
+}
+
+
+
+footer{
+
+    padding:50px 0;
+
+    color:#86868b;
+
+}
