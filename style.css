@@ -3318,3 +3318,126 @@ body::before{
         display:none;
     }
 }
+
+/* ==================================================
+   PAGE 01 CLEANUP PATCH
+   右下角减负 + 蓝色胶带移到纸张上沿
+================================================== */
+
+/* 让第一页的外部胶带以第一页为定位参照 */
+.journal-profile{
+    position:relative;
+}
+
+/* 原来位于左侧的蓝色胶带，移动到纸张左上方 */
+.journal-profile::before{
+    left:calc(50% - 450px);
+    top:calc(50% - 326px);
+    z-index:6;
+    width:108px;
+    height:25px;
+    border:1px solid rgba(83,111,121,.16);
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #b9e0ef 0 10px,
+            #e8f7fc 10px 20px
+        );
+    opacity:.92;
+    transform:rotate(-9deg);
+    box-shadow:0 4px 9px rgba(70,95,105,.10);
+}
+
+/* 删除右下角重复的 AI + DESIGN 贴纸 */
+.journal-profile .sticker-ai{
+    display:none !important;
+}
+
+/* 把额外的小机器人涂鸦移到照片右侧，避免堆在底部 */
+.journal-profile .doodle-bot{
+    right:7px;
+    top:218px;
+    bottom:auto;
+    font-size:16px;
+    opacity:.72;
+}
+
+/* 去掉机器人左侧的长对话气泡，减少信息密度 */
+.journal-profile .profile-mascot::after{
+    display:none !important;
+}
+
+/* NOW BUILDING 便签缩小并靠左 */
+.journal-profile .profile-quest-card{
+    left:7px;
+    bottom:10px;
+    width:194px;
+    min-height:80px;
+    padding:12px 14px 11px;
+    transform:rotate(-2deg);
+}
+
+.journal-profile .profile-quest-card::before{
+    left:55px;
+    width:78px;
+    height:20px;
+}
+
+.journal-profile .profile-quest-card b{
+    font-size:14px;
+}
+
+.journal-profile .profile-quest-card small{
+    font-size:7px;
+}
+
+/* AI BUDDY 缩小，独立放在右下角 */
+.journal-profile .profile-mascot{
+    right:14px;
+    bottom:11px;
+    width:76px;
+    height:76px;
+    border-width:2px;
+    border-radius:21px 21px 26px 26px;
+    transform:rotate(3deg);
+}
+
+.journal-profile .profile-mascot::before{
+    left:-8px;
+    top:29px;
+    width:6px;
+    height:12px;
+    border-width:2px;
+}
+
+.journal-profile .mascot-antenna{
+    top:-14px;
+    height:15px;
+}
+
+.journal-profile .mascot-antenna::before{
+    top:-6px;
+    width:9px;
+    height:9px;
+}
+
+.journal-profile .mascot-face{
+    font-size:16px;
+}
+
+.journal-profile .profile-mascot b{
+    margin-top:5px;
+    font-size:7px;
+}
+
+/* 让底部两个元素之间保留明确空隙 */
+.journal-profile .profile-photo-zone{
+    padding-bottom:4px;
+}
+
+/* 小屏时不显示外部蓝色胶带 */
+@media(max-width:900px){
+    .journal-profile::before{
+        display:none;
+    }
+}
