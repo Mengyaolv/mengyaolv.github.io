@@ -1318,3 +1318,919 @@ body.page-out{
     }
 }
 
+/* ==================================================
+   SCRAPBOOK JOURNAL SYSTEM
+   仅作用于 01 / 04 / 05 / 06，两个产品页保持原设计
+================================================== */
+
+:root{
+    --journal-pink:#f6b8c8;
+    --journal-pink-soft:#fde4eb;
+    --journal-blue:#a9d9ee;
+    --journal-blue-soft:#e5f5fb;
+    --journal-yellow:#f5d979;
+    --journal-yellow-soft:#fff4bd;
+    --journal-green:#b9d9b0;
+    --journal-green-soft:#e8f3e3;
+    --journal-purple:#cdbfe9;
+    --journal-purple-soft:#eee8fa;
+    --journal-orange:#f3b87f;
+    --journal-ink:#4a413b;
+}
+
+/* 页面外部背景：软格纹 + 彩色纸屑 */
+body{
+    background-color:#f5ede4;
+    background-image:
+        linear-gradient(rgba(207,171,147,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(207,171,147,.08) 1px,transparent 1px),
+        radial-gradient(circle at 12% 16%,rgba(246,184,200,.22),transparent 18%),
+        radial-gradient(circle at 88% 78%,rgba(169,217,238,.22),transparent 20%);
+    background-size:28px 28px,28px 28px,100% 100%,100% 100%;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.50;
+    background-image:
+        radial-gradient(circle at 7% 22%,var(--journal-yellow) 0 2px,transparent 3px),
+        radial-gradient(circle at 94% 36%,var(--journal-pink) 0 2px,transparent 3px),
+        radial-gradient(circle at 12% 84%,var(--journal-blue) 0 2px,transparent 3px),
+        radial-gradient(circle at 86% 90%,var(--journal-green) 0 2px,transparent 3px);
+}
+
+/* 右侧导航改成活页夹标签 */
+.navigation{
+    right:34px;
+    padding:9px 8px;
+    border:1px solid rgba(138,104,80,.10);
+    border-radius:22px;
+    background:rgba(255,253,248,.70);
+    box-shadow:0 12px 30px rgba(88,64,48,.08);
+    backdrop-filter:blur(12px);
+}
+
+.navigation div{
+    position:relative;
+    width:52px;
+    height:34px;
+    justify-content:center;
+    gap:8px;
+    margin:7px 0;
+    border-radius:11px;
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-size:12px;
+}
+
+.navigation div:nth-child(1){background:rgba(246,184,200,.22);}
+.navigation div:nth-child(2){background:rgba(199,243,106,.18);}
+.navigation div:nth-child(3){background:rgba(185,205,191,.24);}
+.navigation div:nth-child(4){background:rgba(245,217,121,.25);}
+.navigation div:nth-child(5){background:rgba(169,217,238,.24);}
+.navigation div:nth-child(6){background:rgba(205,191,233,.24);}
+
+.navigation span{
+    width:6px;
+    height:6px;
+}
+
+.navigation .active{
+    color:#5a473c;
+    transform:translateX(-5px) rotate(-2deg);
+    box-shadow:3px 4px 0 rgba(97,70,52,.12);
+}
+
+.navigation .active span{
+    width:8px;
+    height:8px;
+    background:#76563a;
+    box-shadow:none;
+    animation:none;
+}
+
+/* 手账纸张：多层纸、缝线、活页孔 */
+.journal-page .journal-paper{
+    overflow:visible;
+    border:1px solid rgba(163,124,96,.14);
+    border-radius:18px 24px 17px 22px;
+    background:
+        linear-gradient(rgba(205,183,161,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(205,183,161,.07) 1px,transparent 1px),
+        #fffdf8;
+    background-size:100% 28px,28px 100%,auto;
+    box-shadow:
+        13px 15px 0 rgba(246,184,200,.28),
+        25px 27px 0 rgba(169,217,238,.20),
+        0 28px 66px rgba(70,50,35,.10);
+}
+
+.journal-page .journal-paper::before{
+    inset:12px;
+    border:1px dashed rgba(169,126,96,.20);
+    border-radius:13px 19px 12px 17px;
+    background:none;
+    opacity:1;
+}
+
+.journal-page .journal-paper::after{
+    left:37px;
+    top:0;
+    width:10px;
+    height:100%;
+    background:
+        radial-gradient(circle,#e8d9ca 0 4px,#bca28d 4.4px 5px,transparent 5.3px)
+        center 28px / 10px 52px repeat-y;
+}
+
+.journal-page .page-label{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:4px;
+    color:#6c5749;
+    background:var(--journal-yellow-soft);
+    box-shadow:3px 4px 0 rgba(111,81,62,.12);
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-weight:700;
+    transform:rotate(-1.5deg);
+}
+
+.journal-page .page-number{
+    display:grid;
+    place-items:center;
+    width:38px;
+    height:38px;
+    right:34px;
+    bottom:25px;
+    border:2px solid rgba(95,73,59,.23);
+    border-radius:50%;
+    color:#6d5647;
+    background:#fff;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-weight:700;
+    box-shadow:3px 3px 0 rgba(95,73,59,.10);
+}
+
+/* 公共装饰层 */
+.journal-decor{
+    position:absolute;
+    inset:0;
+    z-index:7;
+    pointer-events:none;
+}
+
+.journal-sticker{
+    position:absolute;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 12px;
+    border:2px solid rgba(75,61,53,.70);
+    border-radius:5px 8px 5px 9px;
+    color:var(--journal-ink);
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.08em;
+    box-shadow:4px 5px 0 rgba(70,53,44,.17);
+}
+
+.doodle{
+    position:absolute;
+    color:#76594a;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    line-height:1;
+    text-shadow:1px 1px 0 rgba(255,255,255,.8);
+}
+
+.journal-page.active .doodle{
+    animation:doodlePop .75s cubic-bezier(.18,.9,.28,1.25) both;
+}
+
+@keyframes doodlePop{
+    from{
+        opacity:0;
+        transform:scale(.45) rotate(-18deg);
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes floatSticker{
+    50%{transform:translateY(-5px) rotate(2deg);}
+}
+
+/* =========================
+   PAGE 01 · PERSONAL JOURNAL
+========================= */
+
+.journal-profile .profile-title{
+    position:relative;
+    z-index:1;
+    margin-top:43px;
+    color:#443a35;
+    font-family:"Segoe Print","Comic Sans MS","KaiTi","Microsoft YaHei",cursive;
+    font-size:50px;
+    font-weight:700;
+    letter-spacing:.03em;
+    transform:rotate(-1deg);
+}
+
+.journal-profile .profile-title::after{
+    content:"";
+    position:absolute;
+    left:-5px;
+    right:-12px;
+    bottom:4px;
+    z-index:-1;
+    height:14px;
+    border-radius:50%;
+    background:rgba(246,184,200,.48);
+    transform:rotate(-1.5deg);
+}
+
+.journal-profile .profile-sub{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 13px;
+    border:1px dashed rgba(81,106,112,.32);
+    border-radius:999px;
+    color:#476a73;
+    background:var(--journal-blue-soft);
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-size:15px;
+    transform:rotate(1deg);
+}
+
+.journal-profile .education{
+    gap:12px;
+    margin-top:31px;
+}
+
+.journal-profile .education-item{
+    position:relative;
+    width:360px;
+    padding:12px 17px 11px 22px;
+    border:1px solid rgba(112,87,72,.14);
+    border-radius:4px 9px 5px 8px;
+    background:rgba(255,255,255,.78);
+    box-shadow:4px 5px 0 rgba(103,79,65,.08);
+}
+
+.journal-profile .education-item:first-child{
+    background:var(--journal-green-soft);
+    transform:rotate(-.7deg);
+}
+
+.journal-profile .education-item:last-child{
+    margin-left:14px;
+    background:var(--journal-purple-soft);
+    transform:rotate(.8deg);
+}
+
+.journal-profile .education-item::before{
+    content:"";
+    position:absolute;
+    left:-7px;
+    top:13px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#fffdf8;
+    box-shadow:inset 0 0 0 1px rgba(106,82,67,.18);
+}
+
+.journal-profile .info-title{
+    margin-bottom:4px;
+    color:#745b4e;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:10px;
+    font-weight:900;
+}
+
+.journal-profile .bottom-area{
+    bottom:31px;
+    gap:22px;
+    width:485px;
+    padding-top:0;
+    border:0;
+    grid-template-columns:1fr 1fr;
+}
+
+.journal-profile .interest,
+.journal-profile .goal{
+    min-height:100px;
+    padding:15px 17px;
+    border:1px solid rgba(112,87,72,.14);
+    border-radius:5px 10px 5px 9px;
+    box-shadow:5px 6px 0 rgba(91,67,54,.09);
+}
+
+.journal-profile .interest{
+    background:var(--journal-yellow-soft);
+    transform:rotate(-1.2deg);
+}
+
+.journal-profile .goal{
+    background:var(--journal-pink-soft);
+    transform:rotate(1.4deg);
+}
+
+.journal-profile .interest h4,
+.journal-profile .goal h4{
+    display:inline-block;
+    margin-bottom:7px;
+    padding-bottom:2px;
+    border-bottom:2px wavy rgba(106,77,61,.30);
+    color:#6f5142;
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-weight:900;
+}
+
+.journal-profile .photo-card{
+    right:132px;
+    top:94px;
+    width:262px;
+    height:329px;
+    padding:14px 14px 47px;
+    border:1px solid rgba(106,82,67,.13);
+    border-radius:3px;
+    background:#fff;
+    box-shadow:
+        8px 10px 0 rgba(169,217,238,.28),
+        0 22px 42px rgba(68,48,36,.14);
+    transform:rotate(4deg);
+}
+
+.journal-profile .photo-card::after{
+    content:"my little universe ♡";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:14px;
+    color:#725d50;
+    text-align:center;
+    font-family:"Segoe Print","Comic Sans MS","KaiTi",cursive;
+    font-size:12px;
+}
+
+.journal-profile .photo-card::before{
+    left:72px;
+    width:118px;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(245,217,121,.86) 0 8px,
+            rgba(255,244,189,.86) 8px 16px
+        );
+}
+
+.sticker-curious{
+    right:72px;
+    top:66px;
+    background:var(--journal-pink-soft);
+    transform:rotate(6deg);
+}
+
+.sticker-ai{
+    right:88px;
+    bottom:93px;
+    background:var(--journal-blue-soft);
+    transform:rotate(-5deg);
+}
+
+.doodle-star{
+    right:52px;
+    top:172px;
+    color:#e4af30;
+    font-size:29px;
+}
+
+.doodle-heart{
+    right:426px;
+    top:72px;
+    color:#dc8299;
+    font-size:30px;
+}
+
+.doodle-flower{
+    left:52px;
+    bottom:34px;
+    color:#7da974;
+    font-size:25px;
+}
+
+/* =========================
+   PAGE 04 · STICKY NOTES
+========================= */
+
+.journal-thinking .thinking-title{
+    position:relative;
+    width:max-content;
+    margin-top:50px;
+    color:#49413b;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:42px;
+    font-weight:700;
+    transform:rotate(-1deg);
+}
+
+.journal-thinking .thinking-title::after{
+    content:"";
+    position:absolute;
+    left:1px;
+    right:-16px;
+    bottom:-5px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(169,217,238,.62);
+}
+
+.journal-thinking .thinking-cards{
+    gap:26px;
+    margin-top:63px;
+}
+
+.journal-thinking .think-card{
+    position:relative;
+    width:250px;
+    min-height:210px;
+    padding:45px 26px 26px;
+    border:1px solid rgba(91,68,55,.16);
+    border-radius:3px 8px 4px 10px;
+    box-shadow:
+        7px 8px 0 rgba(90,67,54,.11),
+        0 18px 30px rgba(70,50,38,.06);
+}
+
+.journal-thinking .think-card:nth-child(1){
+    background:var(--journal-yellow-soft);
+    transform:rotate(-2.3deg);
+}
+
+.journal-thinking .think-card:nth-child(2){
+    background:var(--journal-blue-soft);
+    transform:rotate(1.8deg);
+}
+
+.journal-thinking .think-card:nth-child(3){
+    background:var(--journal-pink-soft);
+    transform:rotate(-1deg);
+}
+
+.journal-thinking .think-card::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-13px;
+    width:86px;
+    height:24px;
+    border:1px solid rgba(115,88,67,.09);
+    background:rgba(255,232,169,.73);
+    transform:translateX(-50%) rotate(-2deg);
+}
+
+.journal-thinking .think-card::after{
+    position:absolute;
+    left:18px;
+    top:14px;
+    width:23px;
+    height:23px;
+    display:grid;
+    place-items:center;
+    border:2px solid rgba(84,64,52,.22);
+    border-radius:50%;
+    background:#fff;
+    color:#806252;
+    font-family:"Comic Sans MS",sans-serif;
+    font-size:11px;
+    font-weight:900;
+}
+
+.journal-thinking .think-card:nth-child(1)::after{content:"01";}
+.journal-thinking .think-card:nth-child(2)::after{content:"02";}
+.journal-thinking .think-card:nth-child(3)::after{content:"03";}
+
+.journal-thinking .think-card:hover{
+    transform:translateY(-12px) rotate(0deg) scale(1.025);
+    box-shadow:
+        9px 11px 0 rgba(90,67,54,.13),
+        0 28px 44px rgba(70,50,38,.10);
+}
+
+.journal-thinking .think-card h3{
+    color:#5b463c;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:19px;
+}
+
+.sticker-thinking{
+    right:81px;
+    top:67px;
+    background:var(--journal-green-soft);
+    transform:rotate(4deg);
+}
+
+.doodle-bulb{
+    right:67px;
+    bottom:86px;
+    color:#dfac2e;
+    font-size:42px;
+}
+
+.doodle-arrow{
+    left:394px;
+    top:146px;
+    color:#7a6658;
+    font-size:37px;
+    transform:rotate(14deg);
+}
+
+/* =========================
+   PAGE 05 · PHOTO SCRAPBOOK
+========================= */
+
+.journal-hobbies .hobby-title{
+    width:max-content;
+    margin-top:37px;
+    color:#4c423c;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:34px;
+    transform:rotate(-1.4deg);
+}
+
+.journal-hobbies .hobby-title::after{
+    content:"";
+    display:block;
+    width:72%;
+    height:8px;
+    margin-top:-6px;
+    border-radius:50%;
+    background:rgba(185,217,176,.65);
+}
+
+.journal-hobbies .hobby-gallery{
+    justify-content:center;
+    gap:36px;
+    margin-top:41px;
+}
+
+.journal-hobbies .hobby-card{
+    position:relative;
+    width:225px;
+    padding:13px 13px 18px;
+    border:1px solid rgba(99,77,64,.12);
+    border-radius:3px;
+    background:#fff;
+    box-shadow:
+        7px 9px 0 rgba(91,68,55,.09),
+        0 18px 28px rgba(66,47,35,.08);
+}
+
+.journal-hobbies .hobby-card:nth-child(1){
+    transform:rotate(-3.2deg);
+}
+
+.journal-hobbies .hobby-card:nth-child(2){
+    margin-top:19px;
+    transform:rotate(2.5deg);
+}
+
+.journal-hobbies .hobby-card:nth-child(3){
+    transform:rotate(-1.4deg);
+}
+
+.journal-hobbies .hobby-card::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-13px;
+    z-index:2;
+    width:78px;
+    height:24px;
+    border:1px solid rgba(100,77,62,.08);
+    background:rgba(246,184,200,.65);
+    transform:translateX(-50%) rotate(-3deg);
+}
+
+.journal-hobbies .hobby-card:nth-child(2)::before{
+    background:rgba(169,217,238,.70);
+    transform:translateX(-50%) rotate(2deg);
+}
+
+.journal-hobbies .hobby-card:nth-child(3)::before{
+    background:rgba(245,217,121,.72);
+}
+
+.journal-hobbies .hobby-card img{
+    width:100%;
+    height:164px;
+    padding:0;
+    border:0;
+    box-shadow:none;
+    transform:none;
+}
+
+.journal-hobbies .hobby-card:hover{
+    transform:translateY(-11px) rotate(0deg) scale(1.025);
+}
+
+.journal-hobbies .hobby-card:hover img{
+    transform:scale(1.02);
+    box-shadow:none;
+}
+
+.journal-hobbies .hobby-name{
+    margin-top:11px;
+    color:#57473e;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:15px;
+    font-weight:700;
+}
+
+.journal-hobbies .life-quote{
+    left:74px;
+    bottom:28px;
+    padding:9px 17px;
+    border-left:4px solid var(--journal-orange);
+    border-radius:0 5px 5px 0;
+    background:rgba(255,244,189,.66);
+    color:#675346;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:14px;
+    transform:rotate(-.7deg);
+}
+
+.sticker-weekend{
+    right:72px;
+    top:64px;
+    background:var(--journal-purple-soft);
+    transform:rotate(4deg);
+}
+
+.doodle-rainbow{
+    right:82px;
+    bottom:62px;
+    color:#d8899e;
+    font-size:64px;
+    transform:rotate(-7deg);
+}
+
+.doodle-spark{
+    left:56px;
+    top:152px;
+    color:#dda92f;
+    font-size:31px;
+}
+
+.doodle-smile{
+    right:425px;
+    top:77px;
+    color:#72a96c;
+    font-size:29px;
+}
+
+/* =========================
+   PAGE 06 · POSTCARD CONTACT
+========================= */
+
+.journal-contact .contact-page{
+    background:
+        linear-gradient(rgba(205,183,161,.10) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(205,183,161,.06) 1px,transparent 1px),
+        linear-gradient(105deg,#fffdf8 0 58%,#fff8f2 58% 100%);
+    background-size:100% 28px,28px 100%,auto;
+}
+
+.journal-contact .contact-title{
+    position:relative;
+    width:max-content;
+    margin-top:73px;
+    color:#493e39;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:42px;
+    transform:rotate(-1.2deg);
+}
+
+.journal-contact .contact-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:-12px;
+    bottom:-4px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(246,184,200,.50);
+}
+
+.journal-contact .contact-sub{
+    display:inline-block;
+    margin-top:24px;
+    padding:6px 12px;
+    border-radius:4px;
+    background:var(--journal-blue-soft);
+    color:#5a7078;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:14px;
+    transform:rotate(.8deg);
+}
+
+.journal-contact .contact-info{
+    display:grid;
+    gap:12px;
+    width:440px;
+    margin-top:45px;
+    line-height:1.5;
+}
+
+.journal-contact .contact-info div{
+    width:max-content;
+    min-width:330px;
+    padding:11px 16px;
+    border:1px solid rgba(99,76,63,.13);
+    border-radius:4px 9px 4px 8px;
+    color:#594a42;
+    background:#fff;
+    box-shadow:4px 5px 0 rgba(91,68,55,.08);
+    font-family:"Segoe Print","Microsoft YaHei",sans-serif;
+    font-size:13px;
+}
+
+.journal-contact .contact-info div:nth-child(1){
+    background:var(--journal-yellow-soft);
+    transform:rotate(-1deg);
+}
+
+.journal-contact .contact-info div:nth-child(2){
+    margin-left:15px;
+    background:var(--journal-green-soft);
+    transform:rotate(.7deg);
+}
+
+.journal-contact .contact-info div:nth-child(3){
+    margin-left:4px;
+    background:var(--journal-purple-soft);
+    transform:rotate(-.5deg);
+}
+
+.journal-contact .contact-image{
+    right:126px;
+    top:133px;
+    width:266px;
+    height:306px;
+}
+
+.journal-contact .contact-image img{
+    padding:12px 12px 43px;
+    border:1px solid rgba(101,77,63,.12);
+    border-radius:3px;
+    box-shadow:
+        8px 10px 0 rgba(246,184,200,.28),
+        0 24px 42px rgba(65,46,34,.13);
+}
+
+.journal-contact .contact-image::after{
+    content:"see you somewhere nice ☺";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:13px;
+    color:#725c50;
+    text-align:center;
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+    font-size:11px;
+    transform:rotate(4deg);
+}
+
+.sticker-mail{
+    right:77px;
+    bottom:69px;
+    background:var(--journal-yellow-soft);
+    transform:rotate(-5deg);
+}
+
+.postage-stamp{
+    position:absolute;
+    right:72px;
+    top:62px;
+    width:61px;
+    height:70px;
+    display:grid;
+    place-items:center;
+    border:2px dashed #b56f69;
+    color:#a85752;
+    background:#fff4ef;
+    font-family:"STSong","Songti SC",serif;
+    font-size:25px;
+    font-weight:700;
+    line-height:.9;
+    text-align:center;
+    transform:rotate(4deg);
+    box-shadow:3px 4px 0 rgba(95,66,54,.09);
+}
+
+.postage-stamp small{
+    font-family:Georgia,serif;
+    font-size:8px;
+    letter-spacing:.14em;
+}
+
+.doodle-plane{
+    right:157px;
+    top:83px;
+    color:#718f9a;
+    font-size:29px;
+    transform:rotate(-18deg);
+}
+
+.doodle-heart-two{
+    right:61px;
+    bottom:155px;
+    color:#da8298;
+    font-size:37px;
+}
+
+/* 手账页轻微漂浮，让静态页面有“贴纸呼吸感” */
+.journal-page.active .journal-sticker{
+    animation:floatSticker 3.4s ease-in-out infinite;
+}
+
+.journal-profile.active .photo-card,
+.journal-contact.active .contact-image{
+    animation:journalPhotoIn .9s .18s cubic-bezier(.16,.84,.24,1) both;
+}
+
+@keyframes journalPhotoIn{
+    from{
+        opacity:0;
+        filter:blur(5px);
+        transform:translateY(35px) rotate(9deg) scale(.94);
+    }
+    to{
+        opacity:1;
+        filter:none;
+    }
+}
+
+/* 响应式：手账装饰在小屏缩减，避免遮挡 */
+@media(max-width:900px){
+    .journal-page .journal-paper{
+        overflow:hidden;
+        box-shadow:
+            7px 8px 0 rgba(246,184,200,.24),
+            13px 15px 0 rgba(169,217,238,.17),
+            0 22px 46px rgba(70,50,35,.09);
+    }
+
+    .journal-decor{
+        opacity:.55;
+    }
+
+    .journal-sticker,
+    .postage-stamp,
+    .doodle-arrow,
+    .doodle-rainbow{
+        display:none;
+    }
+
+    .journal-profile .education-item{
+        width:100%;
+    }
+
+    .journal-profile .education-item:last-child{
+        margin-left:0;
+    }
+
+    .journal-profile .bottom-area{
+        width:100%;
+        grid-template-columns:1fr;
+    }
+
+    .journal-thinking .thinking-cards{
+        gap:30px;
+    }
+
+    .journal-thinking .think-card{
+        width:100%;
+        transform:none;
+    }
+
+    .journal-hobbies .hobby-card,
+    .journal-hobbies .hobby-card:nth-child(2){
+        width:100%;
+        margin-top:0;
+        transform:none;
+    }
+
+    .journal-contact .contact-info,
+    .journal-contact .contact-info div{
+        width:100%;
+        min-width:0;
+        margin-left:0 !important;
+    }
+}
+
