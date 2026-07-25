@@ -337,12 +337,46 @@ h2{
   .flow-stage{min-height:auto}
   .footer{flex-direction:column}
 }
+
+.back-home{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:22px;
+  padding:8px 13px;
+  border-radius:999px;
+  color:var(--jade);
+  background:rgba(255,253,248,.68);
+  border:1px solid rgba(178,139,81,.24);
+  font-size:13px;
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.back-home:hover{
+  transform:translateX(-3px);
+  background:rgba(255,253,248,.96);
+  box-shadow:0 8px 20px rgba(39,47,41,.08);
+}
+.back-arrow{
+  font-size:18px;
+  line-height:1;
+  color:var(--gold);
+}
+.hero-title-link{
+  display:inline-block;
+}
+.hero-title-link h1{
+  transition:opacity .2s ease;
+}
+.hero-title-link:hover h1{
+  opacity:.78;
+}
+
 </style>
 </head>
 <body>
 <div class="site-shell">
   <nav class="nav">
-    <a href="#top" class="brand">
+    <a href="./index.html" class="brand" aria-label="返回作品集首页">
       <span class="seal">观</span>
       <span class="brand-copy"><b>观己</b><small>传统文化 × 心理学</small></span>
     </a>
@@ -359,8 +393,14 @@ h2{
   <main id="top">
     <section class="hero">
       <div class="reveal">
+        <a class="back-home" href="./index.html" aria-label="返回作品集首页">
+          <span class="back-arrow">←</span>
+          <span>返回作品集首页</span>
+        </a>
         <span class="eyebrow">Guan Ji · Self Reflection</span>
-        <h1>观己</h1>
+        <a class="hero-title-link" href="./index.html" aria-label="返回作品集首页">
+          <h1>观己</h1>
+        </a>
         <p class="hero-subtitle">从传统文化与心理学两个视角，<br>重新理解自己。</p>
         <p class="lead">观己是一款面向年轻用户的自我认知产品。它以八字为传统文化分析框架，再结合心理学视角，将复杂的术语转化为更容易理解的性格观察、关系模式与成长建议。</p>
         <div class="hero-actions">

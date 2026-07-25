@@ -846,3 +846,475 @@ body.page-out{
         margin:35px 0 0 auto;
     }
 }
+
+/* ==================================================
+   PAGE 03 · PROJECT 02 · 观己
+   由观己产品官网迁移的东方品牌视觉
+================================================== */
+
+.oriental-paper{
+    --oriental-paper:#f7f3eb;
+    --oriental-white:#fffdf8;
+    --oriental-ink:#242824;
+    --oriental-muted:#74766f;
+    --oriental-jade:#244c3f;
+    --oriental-jade-2:#496f61;
+    --oriental-jade-soft:#dfe9e3;
+    --oriental-celadon:#b9cdbf;
+    --oriental-gold:#b28b51;
+    --oriental-gold-soft:#dfceb2;
+    --oriental-seal:#a54d3f;
+
+    border:1px solid rgba(178,139,81,.22);
+    background:
+        radial-gradient(
+            circle at 82% 44%,
+            rgba(185,205,191,.31),
+            transparent 29%
+        ),
+        linear-gradient(
+            135deg,
+            #fffdf8 0%,
+            #f7f3eb 58%,
+            #eee7db 100%
+        );
+    box-shadow:
+        0 28px 72px rgba(39,47,41,.12),
+        inset 0 0 0 1px rgba(255,255,255,.54);
+}
+
+.oriental-paper::before{
+    opacity:.17;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 5px,
+            rgba(54,49,40,.055) 6px
+        ),
+        radial-gradient(
+            rgba(36,76,63,.16) .65px,
+            transparent .65px
+        );
+    background-size:auto,9px 9px;
+    mix-blend-mode:multiply;
+}
+
+.oriental-paper::after{
+    left:40px;
+    width:1px;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(178,139,81,.60) 15%,
+            rgba(178,139,81,.60) 85%,
+            transparent
+        );
+}
+
+.oriental-page-label,
+.oriental-page-number{
+    color:var(--oriental-gold);
+}
+
+.oriental-vertical-copy{
+    position:absolute;
+    left:15px;
+    top:150px;
+    color:rgba(36,76,63,.44);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:10px;
+    letter-spacing:.28em;
+    writing-mode:vertical-rl;
+}
+
+.oriental-orbit{
+    position:absolute;
+    z-index:1;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.orbit-one{
+    right:52px;
+    top:68px;
+    width:430px;
+    height:430px;
+    border:1px solid rgba(178,139,81,.21);
+}
+
+.orbit-two{
+    right:100px;
+    top:116px;
+    width:334px;
+    height:334px;
+    border:1px dashed rgba(36,76,63,.19);
+}
+
+.project-two.active .orbit-one{
+    animation:orientalOrbit 18s linear infinite;
+}
+
+.project-two.active .orbit-two{
+    animation:orientalOrbitReverse 24s linear infinite;
+}
+
+@keyframes orientalOrbit{
+    to{transform:rotate(360deg);}
+}
+
+@keyframes orientalOrbitReverse{
+    to{transform:rotate(-360deg);}
+}
+
+.oriental-copy{
+    width:49%;
+}
+
+.oriental-status{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.oriental-seal{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border:2px solid var(--oriental-seal);
+    border-radius:9px;
+    color:var(--oriental-seal);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:22px;
+    font-weight:700;
+    transform:rotate(-3deg);
+    box-shadow:0 6px 15px rgba(165,77,63,.08);
+}
+
+.oriental-status > span:last-child{
+    display:flex;
+    flex-direction:column;
+    line-height:1.25;
+}
+
+.oriental-status b{
+    color:var(--oriental-jade);
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:12px;
+    letter-spacing:.16em;
+}
+
+.oriental-status small{
+    margin-top:3px;
+    color:var(--oriental-muted);
+    font-size:9px;
+    letter-spacing:.11em;
+}
+
+.oriental-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:17px;
+    color:var(--oriental-gold);
+    font-weight:700;
+    letter-spacing:.16em;
+}
+
+.oriental-kicker::before{
+    content:"";
+    width:36px;
+    height:1px;
+    background:var(--oriental-gold);
+}
+
+.project-two-title{
+    color:var(--oriental-jade);
+    font-family:"STSong","Songti SC","SimSun",serif !important;
+    font-size:57px !important;
+    font-weight:700 !important;
+    letter-spacing:.11em !important;
+    line-height:1 !important;
+}
+
+.project-two.active .project-two-title{
+    animation:orientalTitleIn 1s .12s cubic-bezier(.16,.84,.24,1) both;
+}
+
+@keyframes orientalTitleIn{
+    from{
+        opacity:0;
+        filter:blur(8px);
+        letter-spacing:.28em;
+        transform:translateX(-20px);
+    }
+    to{
+        opacity:1;
+        filter:none;
+        letter-spacing:.11em;
+        transform:none;
+    }
+}
+
+.oriental-sub{
+    margin-top:18px;
+    color:#383a36;
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:21px;
+    line-height:1.5;
+}
+
+.oriental-desc{
+    max-width:485px;
+    margin-top:24px !important;
+    color:var(--oriental-muted) !important;
+    font-size:14px !important;
+    line-height:1.95 !important;
+}
+
+.oriental-meta{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:26px;
+}
+
+.oriental-meta > div{
+    min-height:72px;
+    padding:11px 9px 8px;
+    border-top:1px solid rgba(178,139,81,.36);
+}
+
+.oriental-meta b{
+    display:block;
+    margin-bottom:4px;
+    color:var(--oriental-ink);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:13px;
+}
+
+.oriental-meta span{
+    display:block;
+    color:var(--oriental-muted);
+    font-size:9px;
+    line-height:1.45;
+}
+
+.project-card-oriental{
+    width:408px;
+    padding:12px 12px 31px;
+    border:1px solid rgba(178,139,81,.24);
+    border-radius:25px;
+    background:rgba(255,253,248,.92);
+    box-shadow:
+        0 24px 58px rgba(39,47,41,.15),
+        0 0 0 8px rgba(255,253,248,.52);
+    transform:rotate(1.2deg);
+    backdrop-filter:blur(14px);
+}
+
+.project-card-oriental:hover{
+    transform:translateY(-13px) rotate(0deg) scale(1.015);
+    box-shadow:
+        0 38px 78px rgba(39,47,41,.20),
+        0 0 0 9px rgba(223,206,178,.31);
+}
+
+.oriental-card-head{
+    display:grid;
+    grid-template-columns:36px 1fr auto;
+    align-items:center;
+    gap:10px;
+    min-height:47px;
+    padding:0 4px 9px;
+    border-bottom:1px solid rgba(36,76,63,.10);
+}
+
+.mini-seal{
+    width:32px;
+    height:32px;
+    display:grid;
+    place-items:center;
+    border:1.5px solid var(--oriental-seal);
+    border-radius:7px;
+    color:var(--oriental-seal);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:17px;
+    transform:rotate(-2deg);
+}
+
+.oriental-card-title{
+    display:flex;
+    flex-direction:column;
+    line-height:1.25;
+}
+
+.oriental-card-title b{
+    color:var(--oriental-jade);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:15px;
+}
+
+.oriental-card-title small{
+    margin-top:2px;
+    color:var(--oriental-muted);
+    font-size:8px;
+}
+
+.oriental-card-index{
+    color:rgba(36,76,63,.30);
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:25px;
+}
+
+.oriental-visual-shell{
+    position:relative;
+    height:282px;
+    margin-top:10px;
+    overflow:hidden;
+    border-radius:18px;
+    background:
+        radial-gradient(
+            circle at 49% 43%,
+            rgba(255,255,255,.98),
+            rgba(225,235,228,.78) 52%,
+            rgba(185,205,191,.40) 66%,
+            transparent 67%
+        ),
+        linear-gradient(
+            145deg,
+            #edf4ef,
+            #f7f3eb
+        );
+}
+
+.moon-disc{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:270px;
+    height:270px;
+    border-radius:50%;
+    border:1px solid rgba(36,76,63,.13);
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 55px rgba(36,76,63,.09);
+    transition:transform .9s cubic-bezier(.16,.84,.24,1);
+}
+
+.moon-disc i{
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(178,139,81,.24);
+}
+
+.moon-disc i:first-child{
+    inset:38px;
+}
+
+.moon-disc i:last-child{
+    inset:74px;
+    border-style:dashed;
+}
+
+.project-card-oriental:hover .moon-disc{
+    transform:translate(-50%,-50%) rotate(12deg) scale(1.04);
+}
+
+.oriental-cover-frame{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:2;
+    width:285px;
+    height:194px;
+    border:1px solid rgba(36,76,63,.14);
+    border-radius:16px;
+    background:var(--oriental-white);
+    box-shadow:0 18px 42px rgba(39,47,41,.16);
+    transform:translate(-50%,-50%) rotate(1deg);
+    transition:
+        transform .8s cubic-bezier(.16,.84,.24,1),
+        box-shadow .8s ease;
+}
+
+.project-card-oriental:hover .oriental-cover-frame{
+    transform:translate(-50%,-53%) rotate(0deg) scale(1.035);
+    box-shadow:0 26px 56px rgba(39,47,41,.21);
+}
+
+.oriental-cover-frame img{
+    border-radius:15px;
+    object-fit:cover;
+    object-position:top center;
+}
+
+.oriental-floating-note{
+    position:absolute;
+    left:12px;
+    bottom:12px;
+    z-index:4;
+    width:135px;
+    padding:10px 12px;
+    border:1px solid rgba(178,139,81,.26);
+    border-radius:13px;
+    background:rgba(255,253,248,.93);
+    box-shadow:0 9px 24px rgba(39,47,41,.09);
+    transform:rotate(-2deg);
+    transition:transform .5s ease;
+}
+
+.project-card-oriental:hover .oriental-floating-note{
+    transform:translateY(-4px) rotate(-1deg);
+}
+
+.oriental-floating-note b{
+    display:block;
+    color:var(--oriental-jade);
+    font-family:"STSong","Songti SC","SimSun",serif;
+    font-size:15px;
+}
+
+.oriental-floating-note span{
+    display:block;
+    margin-top:3px;
+    color:var(--oriental-muted);
+    font-size:8px;
+    letter-spacing:.06em;
+}
+
+.oriental-more{
+    right:17px;
+    bottom:9px;
+    border:1px solid rgba(36,76,63,.18);
+    border-radius:999px;
+    background:var(--oriental-jade);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(36,76,63,.17);
+}
+
+.project-card-oriental:hover .oriental-more{
+    background:var(--oriental-seal);
+}
+
+@media(max-width:900px){
+    .oriental-vertical-copy,
+    .oriental-orbit{
+        display:none;
+    }
+
+    .oriental-copy{
+        width:100%;
+    }
+
+    .oriental-meta{
+        grid-template-columns:1fr;
+    }
+
+    .project-card-oriental{
+        width:100%;
+    }
+}
+
