@@ -487,9 +487,275 @@ h2{
   .quest{grid-template-columns:1fr 1fr}
 }
 
+
+
+/* ===== PIXEL EXIT SYSTEM ===== */
+.site-exit{
+  position:fixed;
+  right:24px;
+  top:24px;
+  z-index:9998;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:156px;
+  padding:10px 14px;
+  border:4px solid var(--ink);
+  border-radius:3px;
+  background:var(--acid);
+  color:var(--ink);
+  box-shadow:7px 7px 0 var(--ink);
+  font-family:"Courier New","Microsoft YaHei",monospace;
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:.06em;
+  text-decoration:none;
+  transition:
+    transform .18s steps(3,end),
+    box-shadow .18s steps(3,end),
+    background .18s ease;
+}
+.site-exit:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:10px 10px 0 var(--ink);
+  background:var(--orange);
+}
+.site-exit:active{
+  transform:translate(5px,5px);
+  box-shadow:2px 2px 0 var(--ink);
+}
+.site-exit .exit-icon{
+  width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  border:3px solid var(--ink);
+  background:#fff;
+  line-height:1;
+}
+.site-exit .exit-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+.site-exit .exit-copy small{
+  margin-top:4px;
+  color:var(--deep2);
+  font-size:8px;
+  font-weight:900;
+}
+.site-exit .exit-key{
+  margin-left:auto;
+  padding:3px 5px;
+  border:2px solid var(--ink);
+  background:#fff;
+  font-size:9px;
+  box-shadow:2px 2px 0 var(--ink);
+}
+
+/* 每一章节右下角的退出提示 */
+.hero,
+.section{
+  position:relative;
+}
+.level-exit{
+  position:absolute;
+  right:2px;
+  bottom:18px;
+  z-index:12;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border:3px solid currentColor;
+  border-radius:2px;
+  background:rgba(247,248,242,.92);
+  color:var(--ink);
+  box-shadow:4px 4px 0 currentColor;
+  font-family:"Courier New","Microsoft YaHei",monospace;
+  font-size:10px;
+  font-weight:1000;
+  letter-spacing:.05em;
+  text-decoration:none;
+  opacity:.72;
+  transition:
+    opacity .2s ease,
+    transform .2s steps(3,end),
+    background .2s ease;
+}
+.level-exit::before{
+  content:"◀";
+}
+.level-exit:hover{
+  opacity:1;
+  transform:translate(-3px,-3px);
+  background:var(--acid);
+}
+.section.dark .level-exit{
+  color:var(--acid);
+  background:rgba(16,37,28,.92);
+}
+.section.acid .level-exit{
+  background:rgba(247,248,242,.92);
+}
+
+/* 退出遮罩：像素关卡结算 */
+.exit-overlay{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  pointer-events:none;
+  opacity:0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(16,37,28,.98) 0,
+      rgba(16,37,28,.98) 18px,
+      rgba(23,55,41,.98) 18px,
+      rgba(23,55,41,.98) 36px
+    );
+  transition:opacity .12s steps(2,end);
+}
+.exit-overlay::before,
+.exit-overlay::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:50%;
+  background:var(--deep);
+  transform:scaleY(0);
+  transition:transform .34s steps(8,end);
+}
+.exit-overlay::before{
+  top:0;
+  transform-origin:top;
+}
+.exit-overlay::after{
+  bottom:0;
+  transform-origin:bottom;
+}
+.exit-panel{
+  position:relative;
+  z-index:2;
+  min-width:320px;
+  padding:28px 34px;
+  border:4px solid var(--acid);
+  border-radius:3px;
+  background:var(--paper);
+  color:var(--ink);
+  box-shadow:10px 10px 0 var(--acid);
+  text-align:center;
+  font-family:"Courier New","Microsoft YaHei",monospace;
+  transform:scale(.82);
+  opacity:0;
+}
+.exit-panel strong{
+  display:block;
+  font-size:24px;
+  letter-spacing:.08em;
+}
+.exit-panel span{
+  display:block;
+  margin-top:10px;
+  color:var(--deep2);
+  font-size:12px;
+  font-weight:900;
+}
+.exit-loader{
+  width:220px;
+  height:18px;
+  margin:18px auto 0;
+  overflow:hidden;
+  border:4px solid var(--ink);
+  background:#fff;
+}
+.exit-loader i{
+  display:block;
+  width:100%;
+  height:100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--acid) 0,
+      var(--acid) 14px,
+      var(--deep2) 14px,
+      var(--deep2) 18px
+    );
+  transform:scaleX(0);
+  transform-origin:left;
+}
+body.is-exiting{
+  overflow:hidden;
+}
+body.is-exiting .exit-overlay{
+  opacity:1;
+}
+body.is-exiting .exit-overlay::before,
+body.is-exiting .exit-overlay::after{
+  transform:scaleY(1);
+}
+body.is-exiting .exit-panel{
+  animation:exitPanelIn .26s .18s steps(5,end) forwards;
+}
+body.is-exiting .exit-loader i{
+  animation:exitLoading .48s .20s steps(10,end) forwards;
+}
+@keyframes exitPanelIn{
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+@keyframes exitLoading{
+  to{transform:scaleX(1)}
+}
+
+@media(max-width:760px){
+  .site-exit{
+    right:12px;
+    top:12px;
+    min-width:auto;
+    padding:8px 10px;
+  }
+  .site-exit .exit-copy small,
+  .site-exit .exit-key{
+    display:none;
+  }
+  .level-exit{
+    right:8px;
+    bottom:10px;
+  }
+  .exit-panel{
+    min-width:0;
+    width:82vw;
+    padding:24px 18px;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<a class="site-exit" href="index.html" data-exit aria-label="退出碳惠星人项目并返回个人主页">
+  <span class="exit-icon">↩</span>
+  <span class="exit-copy">
+    EXIT PROJECT
+    <small>返回个人主页</small>
+  </span>
+  <span class="exit-key">ESC</span>
+</a>
+
+<div class="exit-overlay" aria-hidden="true">
+  <div class="exit-panel">
+    <strong>MISSION SAVED</strong>
+    <span>正在退出碳惠星人项目……</span>
+    <div class="exit-loader"><i></i></div>
+  </div>
+</div>
+
 <div class="wrap">
   <nav class="nav">
     <div class="brand"><div class="brand-badge">🌿</div><span>碳惠星人 / The Greeners</span></div>
@@ -630,8 +896,61 @@ h2{
   <footer class="footer">碳惠星人 The Greeners · PIXEL GREEN QUEST · 校园低碳产品展示版</footer>
 </div>
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.10});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const io = new IntersectionObserver(
+  entries => entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("on");
+  }),
+  { threshold: 0.10 }
+);
+
+document.querySelectorAll(".reveal").forEach(element => io.observe(element));
+
+/* 为 Hero 和每个章节自动添加关卡退出入口 */
+const exitTargets = [
+  document.querySelector(".hero"),
+  ...document.querySelectorAll(".section")
+].filter(Boolean);
+
+exitTargets.forEach((section, index) => {
+  const exit = document.createElement("a");
+  exit.href = "index.html";
+  exit.className = "level-exit";
+  exit.dataset.exit = "";
+  exit.setAttribute("aria-label", "退出项目并返回个人主页");
+  exit.textContent = index === 0
+    ? "EXIT LEVEL 00"
+    : `EXIT LEVEL ${String(index).padStart(2, "0")}`;
+  section.appendChild(exit);
+});
+
+/* 像素退出转场 */
+let exiting = false;
+
+function exitProject(url = "index.html") {
+  if (exiting) return;
+  exiting = true;
+  document.body.classList.add("is-exiting");
+
+  window.setTimeout(() => {
+    window.location.href = url;
+  }, 720);
+}
+
+document.addEventListener("click", event => {
+  const trigger = event.target.closest("[data-exit]");
+  if (!trigger) return;
+
+  event.preventDefault();
+  exitProject(trigger.getAttribute("href") || "index.html");
+});
+
+/* Esc 键快速退出 */
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    exitProject("index.html");
+  }
+});
 </script>
 </body>
 </html>
