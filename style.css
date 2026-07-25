@@ -2757,3 +2757,564 @@ body::before{
     }
 }
 
+/* ==================================================
+   SIGNATURE SCRAPBOOK UPGRADE
+   强化纸张质感、卡通感与个人识别度
+   仅作用于 01 / 04 / 05 / 06；项目页 02 / 03 不改动
+================================================== */
+
+:root{
+    --sig-ink:#4b3e37;
+    --sig-line:#866c5d;
+    --sig-pink:#f6b8c8;
+    --sig-pink-light:#ffe8ef;
+    --sig-yellow:#f5d979;
+    --sig-yellow-light:#fff5bd;
+    --sig-blue:#a9d9ee;
+    --sig-blue-light:#e5f6fc;
+    --sig-green:#b9d9b0;
+    --sig-green-light:#eaf4e6;
+    --sig-purple:#cdbfe9;
+    --sig-purple-light:#f0ebfb;
+    --sig-orange:#f1b077;
+    --sig-paper:#fffdf7;
+}
+
+/* 书桌背景：方格垫、纸屑与柔和光斑 */
+body{
+    background-color:#f1e7db;
+    background-image:
+        linear-gradient(rgba(124,92,72,.065) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(124,92,72,.065) 1px,transparent 1px),
+        radial-gradient(circle at 13% 15%,rgba(246,184,200,.29),transparent 19%),
+        radial-gradient(circle at 87% 83%,rgba(169,217,238,.29),transparent 22%),
+        linear-gradient(135deg,#f7efe5 0%,#eee0d2 100%);
+    background-size:30px 30px,30px 30px,100% 100%,100% 100%,100% 100%;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.8;
+    background:
+        radial-gradient(circle at 5% 11%,var(--sig-yellow) 0 2px,transparent 3px),
+        radial-gradient(circle at 96% 23%,var(--sig-pink) 0 2px,transparent 3px),
+        radial-gradient(circle at 8% 91%,var(--sig-blue) 0 2px,transparent 3px),
+        radial-gradient(circle at 91% 88%,var(--sig-green) 0 2px,transparent 3px);
+}
+
+/* 页面外侧增加彩色纸层，强化“真正一本手账”的感觉 */
+.journal-page .journal-paper{
+    isolation:isolate;
+    border:2px solid rgba(116,86,68,.22);
+    border-radius:21px 30px 24px 34px / 25px 22px 31px 27px;
+    background:
+        radial-gradient(circle at 18% 12%,rgba(255,255,255,.92),transparent 28%),
+        linear-gradient(rgba(161,129,104,.105) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(161,129,104,.07) 1px,transparent 1px),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 27px,
+            rgba(105,150,170,.095) 27px,
+            rgba(105,150,170,.095) 28px
+        ),
+        var(--sig-paper);
+    background-size:auto,28px 28px,28px 28px,100% 28px,auto;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.9) inset,
+        12px 13px 0 var(--sig-pink-light),
+        23px 25px 0 var(--sig-blue-light),
+        34px 36px 0 var(--sig-yellow-light),
+        0 34px 76px rgba(73,50,36,.18);
+    filter:drop-shadow(0 2px 0 rgba(99,72,55,.08));
+}
+
+/* 纸张纤维、手绘虚线边框 */
+.journal-page .journal-paper::before{
+    inset:14px 15px 15px 16px;
+    border:2px dashed rgba(126,91,70,.25);
+    border-radius:14px 23px 17px 28px / 18px 14px 25px 20px;
+    opacity:1;
+    background:
+        radial-gradient(circle,rgba(118,85,65,.11) 0 .65px,transparent .8px)
+        0 0 / 9px 9px;
+    mix-blend-mode:multiply;
+}
+
+/* 更明显的活页孔与金属环 */
+.journal-page .journal-paper::after{
+    left:24px;
+    top:18px;
+    width:26px;
+    height:calc(100% - 36px);
+    background:
+        radial-gradient(
+            circle at 13px 13px,
+            #f8eee3 0 5px,
+            #c5aa94 5.5px 6.5px,
+            #fffdf7 7px 8px,
+            transparent 8.5px
+        )
+        center 0 / 26px 65px repeat-y;
+    filter:drop-shadow(2px 2px 0 rgba(87,63,49,.10));
+}
+
+/* 装饰层顶部胶带 + 底部撕纸齿 */
+.journal-page .journal-decor::before{
+    content:"";
+    position:absolute;
+    right:96px;
+    top:-15px;
+    width:150px;
+    height:30px;
+    border:1px solid rgba(111,79,61,.12);
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(246,184,200,.78) 0 10px,
+            rgba(255,232,239,.84) 10px 20px
+        );
+    opacity:.9;
+    transform:rotate(3deg);
+    box-shadow:0 3px 8px rgba(76,53,40,.08);
+}
+
+.journal-page .journal-decor::after{
+    content:"";
+    position:absolute;
+    left:16px;
+    right:16px;
+    bottom:-13px;
+    height:18px;
+    background:
+        radial-gradient(circle at 9px 0,transparent 8px,var(--sig-paper) 8.5px)
+        0 0 / 18px 18px repeat-x;
+    filter:drop-shadow(0 4px 2px rgba(79,55,40,.08));
+}
+
+/* 统一手绘标题标签 */
+.journal-page .page-label{
+    padding:8px 14px 7px;
+    border:2px solid rgba(76,58,48,.62);
+    border-radius:5px 10px 5px 9px;
+    color:#5f4c42;
+    background:var(--sig-yellow-light);
+    box-shadow:
+        4px 5px 0 rgba(73,54,43,.18),
+        0 0 0 3px rgba(255,255,255,.55) inset;
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    font-weight:900;
+    transform:rotate(-2deg);
+}
+
+.journal-page .page-label::after{
+    content:"MENGYAO'S AI SCRAPBOOK";
+    display:block;
+    margin-top:3px;
+    color:#a46f78;
+    font-size:7px;
+    letter-spacing:.12em;
+}
+
+/* 页码改成卡通印章 */
+.journal-page .page-number{
+    width:43px;
+    height:43px;
+    right:29px;
+    bottom:24px;
+    border:2px solid var(--sig-ink);
+    border-radius:48% 52% 46% 54%;
+    color:var(--sig-ink);
+    background:#fff;
+    box-shadow:
+        4px 4px 0 rgba(75,62,55,.18),
+        inset 0 0 0 3px var(--sig-pink-light);
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:12px;
+    transform:rotate(6deg);
+}
+
+.journal-page .page-number::before{
+    content:"M";
+    position:absolute;
+    left:-14px;
+    top:-12px;
+    display:grid;
+    place-items:center;
+    width:22px;
+    height:22px;
+    border:2px solid var(--sig-ink);
+    border-radius:50%;
+    color:#fff;
+    background:#df899f;
+    font-size:10px;
+    box-shadow:2px 2px 0 rgba(75,62,55,.16);
+}
+
+/* 贴纸改为粗描边、硬阴影、卡通弹跳 */
+.journal-sticker{
+    border:2px solid var(--sig-ink);
+    border-radius:5px 10px 5px 9px;
+    box-shadow:
+        5px 6px 0 var(--sig-ink),
+        0 0 0 3px rgba(255,255,255,.46) inset;
+    text-shadow:1px 1px 0 #fff;
+}
+
+.journal-page.active .journal-sticker{
+    animation:signatureStickerFloat 3.2s ease-in-out infinite;
+}
+
+@keyframes signatureStickerFloat{
+    0%,100%{translate:0 0;}
+    50%{translate:0 -6px;}
+}
+
+/* 标题统一增加马克笔荧光底纹 */
+.journal-profile .profile-title,
+.journal-thinking .thinking-title,
+.journal-hobbies .hobby-title,
+.journal-contact .contact-title{
+    text-shadow:1px 2px 0 rgba(255,255,255,.9);
+}
+
+.journal-profile .profile-title::after,
+.journal-thinking .thinking-title::after,
+.journal-hobbies .hobby-title::after,
+.journal-contact .contact-title::after{
+    height:13px;
+    border:1px solid rgba(94,67,51,.04);
+    box-shadow:0 3px 0 rgba(85,61,47,.05);
+}
+
+/* 所有非产品卡片增加手绘边框与纸角 */
+.journal-page .education-item,
+.journal-page .interest,
+.journal-page .goal,
+.journal-page .think-card,
+.journal-page .hobby-card,
+.journal-page .contact-info div,
+.journal-page .profile-quest-card,
+.journal-page .profile-mascot,
+.journal-page .contact-image-secondary{
+    border:2px solid rgba(82,63,53,.56);
+    box-shadow:
+        6px 7px 0 rgba(78,58,47,.16),
+        0 0 0 3px rgba(255,255,255,.34) inset;
+}
+
+/* 便签卡片纸角折叠 */
+.journal-page .education-item::after,
+.journal-page .interest::after,
+.journal-page .goal::after,
+.journal-page .think-card::after{
+    content:"";
+    position:absolute;
+    right:-2px;
+    bottom:-2px;
+    width:19px;
+    height:19px;
+    border-left:1px solid rgba(77,57,47,.18);
+    border-top:1px solid rgba(77,57,47,.18);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.0) 0 49%,
+            rgba(126,96,77,.16) 50% 52%,
+            rgba(255,255,255,.66) 53%
+        );
+    border-radius:0 0 5px 0;
+}
+
+/* 第一页：更鲜明的 AI 手账身份 */
+.journal-profile .profile-title{
+    font-size:52px;
+    letter-spacing:.015em;
+}
+
+.journal-profile .profile-sub{
+    border:2px solid rgba(64,93,105,.54);
+    box-shadow:4px 5px 0 rgba(64,93,105,.14);
+}
+
+.journal-profile .profile-photo-zone::before{
+    content:"HELLO, I'M MENGYAO!";
+    position:absolute;
+    right:8px;
+    top:-7px;
+    z-index:8;
+    padding:8px 11px;
+    border:2px solid var(--sig-ink);
+    border-radius:18px 18px 18px 4px;
+    color:var(--sig-ink);
+    background:#fff;
+    box-shadow:4px 5px 0 rgba(75,62,55,.16);
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:9px;
+    font-weight:900;
+    transform:rotate(3deg);
+}
+
+.journal-profile .photo-card{
+    border:2px solid var(--sig-ink);
+    box-shadow:
+        9px 11px 0 var(--sig-blue),
+        17px 19px 0 rgba(246,184,200,.54),
+        0 25px 45px rgba(66,46,34,.17);
+}
+
+.journal-profile .photo-card img{
+    border:2px solid rgba(77,59,49,.18);
+    border-radius:2px;
+}
+
+.journal-profile .profile-mascot{
+    background:
+        radial-gradient(circle at 35% 28%,#fff 0 4px,transparent 5px),
+        var(--sig-green-light);
+}
+
+.journal-profile .profile-mascot::after{
+    content:"ideas → prototypes → impact!";
+    position:absolute;
+    left:-121px;
+    top:8px;
+    width:112px;
+    padding:7px 8px;
+    border:2px solid var(--sig-ink);
+    border-radius:14px 14px 4px 14px;
+    color:#5b4b43;
+    background:#fff;
+    box-shadow:3px 4px 0 rgba(75,62,55,.14);
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:7px;
+    line-height:1.35;
+    text-align:center;
+}
+
+.journal-profile .profile-quest-card{
+    border-radius:6px 11px 6px 10px;
+    background:
+        linear-gradient(rgba(82,63,53,.08) 1px,transparent 1px),
+        var(--sig-yellow-light);
+    background-size:100% 20px;
+}
+
+/* 第四页：三张便签像贴在真正的手账页上 */
+.journal-thinking .think-card{
+    border-width:2px;
+}
+
+.journal-thinking .think-card::before{
+    top:-16px;
+    height:27px;
+    border:1px solid rgba(82,61,49,.18);
+    box-shadow:0 3px 6px rgba(75,54,42,.08);
+}
+
+.journal-thinking .think-card:nth-child(1)::before{
+    background:repeating-linear-gradient(45deg,#f9dc82 0 9px,#fff0b2 9px 18px);
+}
+.journal-thinking .think-card:nth-child(2)::before{
+    background:repeating-linear-gradient(45deg,#aadced 0 9px,#e5f6fc 9px 18px);
+}
+.journal-thinking .think-card:nth-child(3)::before{
+    background:repeating-linear-gradient(45deg,#efb1c3 0 9px,#ffe5ed 9px 18px);
+}
+
+/* 第五页：拍立得边框、手绘小角标 */
+.journal-hobbies .hobby-card{
+    border:2px solid var(--sig-ink);
+    box-shadow:
+        8px 10px 0 rgba(75,62,55,.17),
+        0 20px 34px rgba(67,48,36,.10);
+}
+
+.journal-hobbies .hobby-card img{
+    border:2px solid rgba(75,62,55,.18);
+}
+
+.journal-hobbies .hobby-card::after{
+    position:absolute;
+    right:12px;
+    bottom:10px;
+    color:#d78298;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:16px;
+    transform:rotate(8deg);
+}
+
+.journal-hobbies .hobby-card:nth-child(1)::after{content:"✦";}
+.journal-hobbies .hobby-card:nth-child(2)::after{content:"♡";}
+.journal-hobbies .hobby-card:nth-child(3)::after{content:"☺";}
+
+/* 第六页：真正的明信片构图 */
+.journal-contact .contact-page::before{
+    background:
+        radial-gradient(circle,rgba(118,85,65,.11) 0 .65px,transparent .8px)
+        0 0 / 9px 9px,
+        linear-gradient(
+            90deg,
+            transparent 0 56%,
+            rgba(121,92,72,.16) 56% 56.3%,
+            transparent 56.3%
+        );
+}
+
+.journal-contact .contact-gallery::after{
+    content:"MEMORIES";
+    position:absolute;
+    right:6px;
+    top:-20px;
+    color:#9c7380;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.14em;
+    transform:rotate(5deg);
+}
+
+.journal-contact .contact-image-primary img{
+    border:2px solid var(--sig-ink);
+}
+
+.journal-contact .contact-image-secondary{
+    border:2px solid var(--sig-ink);
+}
+
+.journal-contact .postage-stamp{
+    border:3px dashed #aa5f5a;
+    box-shadow:
+        4px 5px 0 rgba(84,57,47,.14),
+        inset 0 0 0 3px rgba(255,255,255,.6);
+}
+
+/* 卡通悬停：像拿起一张纸或贴纸 */
+.journal-page .education-item,
+.journal-page .interest,
+.journal-page .goal,
+.journal-page .think-card,
+.journal-page .hobby-card,
+.journal-page .contact-info div,
+.journal-page .profile-quest-card{
+    transition:
+        transform .36s cubic-bezier(.18,.9,.25,1.25),
+        box-shadow .36s ease,
+        filter .36s ease;
+}
+
+.journal-page .education-item:hover,
+.journal-page .interest:hover,
+.journal-page .goal:hover,
+.journal-page .contact-info div:hover,
+.journal-page .profile-quest-card:hover{
+    z-index:9;
+    transform:translateY(-7px) rotate(0deg) scale(1.018);
+    box-shadow:
+        9px 11px 0 rgba(78,58,47,.18),
+        0 22px 36px rgba(67,47,35,.10);
+    filter:saturate(1.06);
+}
+
+/* 页面进入时增加“翻开手账”感 */
+.journal-page:not(.active) .journal-paper{
+    transform:
+        translateY(34px)
+        rotateX(4deg)
+        rotateZ(-.45deg)
+        scale(.975);
+}
+
+.journal-page.active .journal-paper{
+    animation:signatureJournalOpen .9s cubic-bezier(.16,.84,.24,1) both;
+}
+
+@keyframes signatureJournalOpen{
+    0%{
+        opacity:0;
+        filter:blur(5px);
+        transform:
+            translateY(42px)
+            rotateX(8deg)
+            rotateZ(-1.2deg)
+            scale(.96);
+    }
+    70%{
+        opacity:1;
+        filter:none;
+        transform:
+            translateY(-4px)
+            rotateX(0)
+            rotateZ(.3deg)
+            scale(1.006);
+    }
+    100%{
+        opacity:1;
+        filter:none;
+        transform:none;
+    }
+}
+
+/* 桌面角落的小卡通纸胶带，仅出现在非产品页面 */
+.journal-page::before,
+.journal-page::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.7;
+}
+
+.journal-page::before{
+    left:5%;
+    top:11%;
+    width:78px;
+    height:20px;
+    border:1px solid rgba(98,72,57,.10);
+    background:repeating-linear-gradient(45deg,#c6e6f3 0 8px,#e9f8fd 8px 16px);
+    transform:rotate(-18deg);
+}
+
+.journal-page::after{
+    right:7%;
+    bottom:11%;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at center,transparent 0 23px,#efb5c5 24px 27px,transparent 28px),
+        radial-gradient(circle at center,#fff7c8 0 7px,transparent 8px);
+    transform:rotate(8deg);
+}
+
+/* 产品页面明确排除所有手账升级影响 */
+.project-one .paper,
+.project-two .paper{
+    animation:none;
+}
+
+@media(max-width:900px){
+    .journal-page .journal-paper{
+        border-radius:18px;
+        box-shadow:
+            7px 8px 0 var(--sig-pink-light),
+            14px 16px 0 var(--sig-blue-light),
+            0 25px 48px rgba(73,50,36,.14);
+    }
+
+    .journal-page .journal-decor::after,
+    .journal-profile .profile-photo-zone::before,
+    .journal-profile .profile-mascot::after,
+    .journal-page::before,
+    .journal-page::after{
+        display:none;
+    }
+
+    .journal-page .page-label::after{
+        display:none;
+    }
+}
