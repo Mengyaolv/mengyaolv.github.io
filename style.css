@@ -1009,17 +1009,15 @@ color:#5d5146;
 
 .hobby-title{
 
-
 font-family:
 "Songti SC",
 serif;
 
+font-size:38px;
 
-font-size:42px;
+margin-top:45px;
 
-
-margin-top:55px;
-
+letter-spacing:2px;
 
 }
 
@@ -1027,28 +1025,22 @@ margin-top:55px;
 
 .hobby-gallery{
 
-
 display:flex;
 
+gap:55px;
 
-gap:45px;
+margin-top:45px;
 
-
-margin-top:70px;
-
+align-items:flex-start;
 
 }
 
 
-
 .hobby-card{
-
 
 width:210px;
 
-
 text-align:center;
-
 
 }
 
@@ -1057,52 +1049,41 @@ text-align:center;
 
 .hobby-card img{
 
+width:170px;
 
-width:190px;
-
-
-height:190px;
-
+height:170px;
 
 object-fit:cover;
 
-
 padding:10px;
-
 
 background:#fff;
 
+border:1px solid rgba(197,179,153,.3);
 
 box-shadow:
 
-0 15px 30px rgba(0,0,0,.12);
-
+0 12px 25px rgba(0,0,0,.10);
 
 transition:.5s;
-
 
 }
 
 
-
 .hobby-card:nth-child(1) img{
-
 
 transform:
 
-rotate(-4deg);
-
+rotate(-3deg);
 
 }
 
 
 .hobby-card:nth-child(2) img{
 
-
 transform:
 
-rotate(3deg);
-
+rotate(2deg);
 
 }
 
@@ -1110,14 +1091,11 @@ rotate(3deg);
 
 .hobby-card:nth-child(3) img{
 
-
 transform:
 
 rotate(-2deg);
 
-
 }
-
 
 
 
@@ -1138,12 +1116,11 @@ translateY(-8px);
 
 .hobby-name{
 
+margin-top:12px;
 
-margin-top:20px;
+font-size:14px;
 
-
-font-size:16px;
-
+letter-spacing:1px;
 
 }
 
@@ -1151,46 +1128,38 @@ font-size:16px;
 
 .hobby-desc{
 
+font-size:12px;
 
-font-size:13px;
-
-
-line-height:1.8;
-
+line-height:1.7;
 
 color:#806c55;
 
-
-margin-top:8px;
-
+margin-top:5px;
 
 }
 
 
 
-
 .life-quote{
-
 
 position:absolute;
 
-
 left:75px;
 
-
-bottom:65px;
-
+bottom:38px;
 
 font-family:
 
+"Songti SC",
 serif;
 
+font-size:18px;
 
-font-size:24px;
+line-height:1.8;
 
+color:#5c5146;
 
-line-height:1.6;
-
+letter-spacing:1px;
 
 }
 
