@@ -2234,3 +2234,526 @@ body::before{
     }
 }
 
+/* ==================================================
+   PERSONAL CARTOON PATCH · PAGE 01 + PAGE 06 ONLY
+   修复第一页重叠，并增强个人化卡通细节；其他页面不变
+================================================== */
+
+/* ---------- PAGE 01：稳定网格布局，彻底避免重叠 ---------- */
+.journal-profile .profile-layout{
+    display:grid;
+    grid-template-columns:minmax(0, 515px) minmax(300px, 1fr);
+    grid-template-rows:auto auto;
+    column-gap:52px;
+    row-gap:14px;
+    align-items:start;
+    margin-top:18px;
+    height:430px;
+}
+
+.journal-profile .profile-main{
+    grid-column:1;
+    grid-row:1;
+    min-width:0;
+}
+
+.journal-profile .profile-copy{
+    width:max-content;
+}
+
+.journal-profile .profile-title{
+    margin-top:0;
+    font-size:45px;
+}
+
+.journal-profile .profile-sub{
+    margin-top:8px;
+    font-size:13px;
+}
+
+.journal-profile .education{
+    width:100%;
+    gap:9px;
+    margin-top:19px;
+}
+
+.journal-profile .education-item{
+    width:100%;
+    min-height:75px;
+    padding:10px 17px 9px 24px;
+}
+
+.journal-profile .education-item:last-child{
+    width:94%;
+    margin-left:17px;
+}
+
+.journal-profile .education-item p{
+    font-size:14px;
+    line-height:1.55;
+}
+
+.journal-profile .bottom-area{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    grid-column:1;
+    grid-row:2;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+.journal-profile .interest,
+.journal-profile .goal{
+    min-height:108px;
+    padding:14px 17px 13px;
+    font-size:13px;
+    line-height:1.72;
+}
+
+.journal-profile .interest h4,
+.journal-profile .goal h4{
+    margin-bottom:5px;
+    font-size:10px;
+    letter-spacing:.10em;
+}
+
+/* ---------- PAGE 01：照片区与个人化小角色 ---------- */
+.journal-profile .profile-photo-zone{
+    position:relative;
+    grid-column:2;
+    grid-row:1 / span 2;
+    width:100%;
+    height:425px;
+    min-width:0;
+}
+
+.journal-profile .profile-photo-zone .photo-card{
+    position:absolute;
+    right:34px;
+    top:7px;
+    width:244px;
+    height:298px;
+    margin:0;
+    padding:13px 13px 43px;
+    transform:rotate(3.2deg);
+}
+
+.journal-profile .profile-photo-zone .photo-card:hover{
+    transform:translateY(-8px) rotate(1deg) scale(1.018);
+}
+
+.journal-profile .profile-photo-zone .photo-card::after{
+    content:"dream · build · repeat ♡";
+    bottom:12px;
+    font-size:11px;
+}
+
+.journal-profile .profile-quest-card{
+    position:absolute;
+    left:2px;
+    bottom:3px;
+    width:220px;
+    min-height:91px;
+    padding:14px 16px;
+    border:2px solid rgba(76,63,55,.55);
+    border-radius:7px 11px 7px 13px;
+    background:var(--journal-green-soft);
+    color:#4e493f;
+    box-shadow:6px 7px 0 rgba(70,53,44,.13);
+    font-family:"Comic Sans MS","Segoe Print","Microsoft YaHei",sans-serif;
+    transform:rotate(-3deg);
+}
+
+.journal-profile .profile-quest-card::before{
+    content:"";
+    position:absolute;
+    left:64px;
+    top:-12px;
+    width:85px;
+    height:22px;
+    border:1px solid rgba(99,77,63,.08);
+    background:rgba(169,217,238,.67);
+    transform:rotate(2deg);
+}
+
+.journal-profile .profile-quest-card span,
+.journal-profile .profile-quest-card b,
+.journal-profile .profile-quest-card small{
+    display:block;
+}
+
+.journal-profile .profile-quest-card span{
+    color:#668062;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:.15em;
+}
+
+.journal-profile .profile-quest-card b{
+    margin-top:4px;
+    color:#455143;
+    font-size:15px;
+}
+
+.journal-profile .profile-quest-card small{
+    margin-top:4px;
+    color:#7d746b;
+    font-size:8px;
+    letter-spacing:.04em;
+}
+
+.journal-profile .profile-mascot{
+    position:absolute;
+    right:17px;
+    bottom:3px;
+    width:92px;
+    height:92px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border:3px solid #66534a;
+    border-radius:25px 25px 31px 31px;
+    background:var(--journal-purple-soft);
+    color:#59483f;
+    box-shadow:5px 6px 0 rgba(73,54,45,.15);
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    transform:rotate(4deg);
+}
+
+.journal-profile .profile-mascot::before,
+.journal-profile .profile-mascot::after{
+    content:"";
+    position:absolute;
+    top:36px;
+    width:8px;
+    height:15px;
+    border:2px solid #66534a;
+    background:var(--journal-pink-soft);
+}
+
+.journal-profile .profile-mascot::before{
+    left:-10px;
+    border-radius:8px 0 0 8px;
+}
+
+.journal-profile .profile-mascot::after{
+    right:-10px;
+    border-radius:0 8px 8px 0;
+}
+
+.journal-profile .mascot-antenna{
+    position:absolute;
+    left:50%;
+    top:-16px;
+    width:3px;
+    height:17px;
+    background:#66534a;
+    transform:translateX(-50%);
+}
+
+.journal-profile .mascot-antenna::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-7px;
+    width:10px;
+    height:10px;
+    border:2px solid #66534a;
+    border-radius:50%;
+    background:var(--journal-yellow);
+    transform:translateX(-50%);
+}
+
+.journal-profile .mascot-face{
+    font-size:19px;
+    line-height:1;
+}
+
+.journal-profile .profile-mascot b{
+    margin-top:7px;
+    font-size:8px;
+    letter-spacing:.09em;
+}
+
+/* ---------- PAGE 01：更鲜明但不遮挡的卡通贴纸 ---------- */
+.sticker-builder{
+    left:447px;
+    top:77px;
+    background:var(--journal-yellow-soft);
+    transform:rotate(-5deg);
+}
+
+.doodle-code{
+    left:445px;
+    top:130px;
+    color:#708f9a;
+    font-size:20px;
+    transform:rotate(-8deg);
+}
+
+.doodle-bot{
+    right:71px;
+    bottom:185px;
+    color:#9474a7;
+    font-size:18px;
+    transform:rotate(8deg);
+}
+
+/* ---------- PAGE 06：双照片拼贴区 ---------- */
+.journal-contact .contact-title{
+    margin-top:62px;
+    font-size:39px;
+}
+
+.journal-contact .contact-sub{
+    margin-top:20px;
+}
+
+.journal-contact .contact-info{
+    width:425px;
+    margin-top:37px;
+    gap:10px;
+}
+
+.journal-contact .contact-gallery{
+    position:absolute;
+    right:61px;
+    top:117px;
+    width:430px;
+    height:410px;
+}
+
+.journal-contact .contact-gallery .contact-image{
+    position:absolute;
+    right:auto;
+    top:auto;
+    margin:0;
+}
+
+.journal-contact .contact-image-primary{
+    left:0;
+    top:11px;
+    width:246px;
+    height:299px;
+    z-index:2;
+}
+
+.journal-contact .contact-image-primary img{
+    padding:11px 11px 40px;
+    transform:rotate(3deg);
+}
+
+.journal-contact .contact-image-primary::after{
+    content:"work, life & tiny joys ☺";
+    bottom:11px;
+    font-size:10px;
+    transform:rotate(3deg);
+}
+
+.journal-contact .contact-image-secondary{
+    right:2px !important;
+    bottom:1px;
+    width:174px;
+    height:215px;
+    z-index:3;
+    padding:11px 11px 37px;
+    border:1px solid rgba(101,77,63,.13);
+    border-radius:3px;
+    background:#fff;
+    box-shadow:
+        7px 9px 0 rgba(169,217,238,.30),
+        0 20px 34px rgba(65,46,34,.12);
+    transform:rotate(-5deg);
+}
+
+.journal-contact .contact-image-secondary::before{
+    content:"";
+    position:absolute;
+    left:46px;
+    top:-13px;
+    width:83px;
+    height:23px;
+    border:1px solid rgba(99,77,63,.08);
+    background:rgba(245,217,121,.74);
+    transform:rotate(3deg);
+}
+
+.journal-contact .contact-image-secondary::after{
+    content:"save another memory ♡";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:11px;
+    color:#725c50;
+    text-align:center;
+    font-family:"Segoe Print","Comic Sans MS",cursive;
+    font-size:8px;
+}
+
+.journal-contact .contact-empty-inner{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border:2px dashed rgba(102,84,72,.24);
+    border-radius:5px;
+    color:#806f64;
+    background:
+        linear-gradient(rgba(169,217,238,.10) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(169,217,238,.10) 1px,transparent 1px),
+        #fbfaf7;
+    background-size:18px 18px;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+    text-align:center;
+}
+
+.journal-contact .contact-empty-inner span{
+    display:grid;
+    place-items:center;
+    width:37px;
+    height:37px;
+    border:2px solid rgba(102,84,72,.27);
+    border-radius:50%;
+    background:var(--journal-pink-soft);
+    font-size:22px;
+    line-height:1;
+}
+
+.journal-contact .contact-empty-inner b{
+    margin-top:8px;
+    font-size:9px;
+    letter-spacing:.13em;
+}
+
+.journal-contact .contact-empty-inner small{
+    margin-top:4px;
+    color:#9a8b81;
+    font-size:7px;
+}
+
+.sticker-collab{
+    left:459px;
+    bottom:68px;
+    background:var(--journal-green-soft);
+    transform:rotate(4deg);
+}
+
+.doodle-contact-star{
+    left:499px;
+    top:77px;
+    color:#dea932;
+    font-size:25px;
+}
+
+/* ---------- 中等宽度：保持第一页与 Contact 不相互覆盖 ---------- */
+@media(max-width:1050px) and (min-width:901px){
+    .journal-profile .profile-layout{
+        grid-template-columns:minmax(0, 485px) minmax(270px,1fr);
+        column-gap:30px;
+    }
+
+    .journal-profile .profile-photo-zone .photo-card{
+        right:12px;
+        width:226px;
+    }
+
+    .journal-profile .profile-quest-card{
+        width:195px;
+    }
+
+    .journal-contact .contact-gallery{
+        right:37px;
+        width:390px;
+    }
+
+    .journal-contact .contact-image-primary{
+        width:225px;
+    }
+
+    .journal-contact .contact-image-secondary{
+        width:157px;
+    }
+}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:900px){
+    .journal-profile .profile-layout{
+        display:flex;
+        flex-direction:column;
+        height:auto;
+        margin-top:24px;
+    }
+
+    .journal-profile .profile-main{
+        width:100%;
+    }
+
+    .journal-profile .bottom-area{
+        order:2;
+        grid-template-columns:1fr;
+        margin-top:19px;
+    }
+
+    .journal-profile .profile-photo-zone{
+        order:3;
+        width:100%;
+        height:430px;
+        margin-top:25px;
+    }
+
+    .journal-profile .profile-photo-zone .photo-card{
+        left:50%;
+        right:auto;
+        transform:translateX(-50%) rotate(3deg);
+    }
+
+    .journal-profile .profile-photo-zone .photo-card:hover{
+        transform:translateX(-50%) translateY(-7px) rotate(1deg);
+    }
+
+    .journal-profile .profile-quest-card{
+        left:8px;
+        width:190px;
+    }
+
+    .journal-profile .profile-mascot{
+        right:18px;
+    }
+
+    .sticker-builder,
+    .doodle-code,
+    .doodle-bot{
+        display:none;
+    }
+
+    .journal-contact .contact-gallery{
+        position:relative;
+        right:auto;
+        top:auto;
+        width:100%;
+        height:445px;
+        margin-top:35px;
+    }
+
+    .journal-contact .contact-image-primary{
+        left:6%;
+    }
+
+    .journal-contact .contact-image-secondary{
+        right:5% !important;
+    }
+
+    .sticker-collab,
+    .doodle-contact-star{
+        display:none;
+    }
+}
+
