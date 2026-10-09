@@ -5628,3 +5628,67 @@ html{
         font-size:8px;
     }
 }
+
+/* ==================================================
+   PAGE 04 · FINAL RESEARCH COPY
+   卡片信息层级：标题 → 技术 → 成果
+================================================== */
+
+.journal-research .space-tech{
+    margin-top:12px;
+}
+
+.journal-research .space-tech p{
+    margin:0;
+    color:#4f5d6c;
+    font-size:9px;
+    line-height:1.55;
+    font-weight:700;
+}
+
+.journal-research .space-results{
+    margin-top:13px;
+}
+
+.journal-research .space-results .space-achievement{
+    margin-top:7px;
+    padding:8px 9px;
+}
+
+.journal-research .space-results .space-achievement span{
+    font-size:6px;
+    letter-spacing:.09em;
+}
+
+.journal-research .space-results .space-achievement b{
+    font-size:7.4px;
+    line-height:1.38;
+}
+
+/* 第一张卡片有两个成果，稍微压紧间距 */
+.journal-research .module-req .space-results{
+    margin-top:10px;
+}
+
+.journal-research .module-req .space-achievement{
+    margin-top:5px;
+}
+
+/* 软件设计与代码生成的成果卡适当增加纵向空间 */
+.journal-research .module-design .space-achievement,
+.journal-research .module-code .space-achievement{
+    min-height:48px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+@media(max-width:900px){
+    .journal-research .space-tech p{
+        font-size:10px;
+    }
+
+    .journal-research .space-results .space-achievement b{
+        font-size:8.5px;
+    }
+}
