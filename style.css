@@ -4582,3 +4582,896 @@ html{
         transform:none !important;
     }
 }
+
+/* ==================================================
+   PAGE 04 · SPACE RESEARCH DOSSIER V2
+   航天任务档案 × 手账 × AI 软件工程
+================================================== */
+
+.journal-research{
+    --space-navy:#213553;
+    --space-navy-2:#334b6a;
+    --space-blue:#8cc5df;
+    --space-blue-soft:#e6f4fa;
+    --space-cyan:#a8e0e2;
+    --space-violet:#b9addd;
+    --space-violet-soft:#eee9f8;
+    --space-yellow:#f0cf67;
+    --space-orange:#efaa72;
+    --space-pink:#e8a4b7;
+    --space-green:#aacfa6;
+    --space-paper:#fffdf8;
+    --space-grid:rgba(79,108,137,.075);
+}
+
+.journal-research .space-paper{
+    overflow:hidden !important;
+    border:2px solid rgba(45,66,92,.32);
+    background:
+        radial-gradient(circle at 85% 13%,rgba(140,197,223,.21),transparent 23%),
+        radial-gradient(circle at 72% 86%,rgba(185,173,221,.18),transparent 22%),
+        linear-gradient(var(--space-grid) 1px,transparent 1px),
+        linear-gradient(90deg,var(--space-grid) 1px,transparent 1px),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 25px,
+            rgba(94,123,150,.055) 25px,
+            rgba(94,123,150,.055) 26px
+        ),
+        var(--space-paper);
+    background-size:
+        auto,
+        auto,
+        26px 26px,
+        26px 26px,
+        100% 26px,
+        auto;
+    box-shadow:
+        11px 13px 0 rgba(140,197,223,.30),
+        21px 24px 0 rgba(185,173,221,.20),
+        31px 35px 0 rgba(240,207,103,.22),
+        0 30px 72px rgba(35,53,83,.16);
+}
+
+.journal-research .space-paper::before{
+    inset:13px;
+    border:1px dashed rgba(52,77,105,.28);
+    border-radius:15px 20px 16px 23px;
+    opacity:1;
+    background:
+        radial-gradient(circle,rgba(50,78,106,.10) 0 .65px,transparent .8px)
+        0 0 / 9px 9px;
+}
+
+.journal-research .space-paper::after{
+    left:25px;
+    top:18px;
+    width:25px;
+    height:calc(100% - 36px);
+    background:
+        radial-gradient(
+            circle at 12px 12px,
+            #f9f2e8 0 5px,
+            #aeb8c0 5.5px 6.5px,
+            #fffdf8 7px 8px,
+            transparent 8.5px
+        )
+        center 0 / 25px 65px repeat-y;
+}
+
+.space-decor{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    pointer-events:none;
+}
+
+.space-tape{
+    position:absolute;
+    right:76px;
+    top:-15px;
+    width:155px;
+    height:29px;
+    border:1px solid rgba(57,81,106,.12);
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(140,197,223,.80) 0 10px,
+            rgba(230,244,250,.91) 10px 20px
+        );
+    transform:rotate(4deg);
+    box-shadow:0 4px 8px rgba(49,70,94,.08);
+}
+
+.space-star,
+.space-cross{
+    position:absolute;
+    color:#d8ad36;
+    font-family:"Comic Sans MS","Segoe Print",sans-serif;
+}
+
+.star-1{right:51px;top:89px;font-size:22px;}
+.star-2{right:118px;bottom:43px;font-size:18px;color:#7fb6cc;}
+.star-3{left:57px;bottom:40px;font-size:16px;color:#b394cf;}
+
+.cross-1{right:252px;top:48px;color:#7399b5;font-size:15px;}
+.cross-2{left:72px;top:174px;color:#d5a74a;font-size:13px;}
+
+.journal-research.active .star-1,
+.journal-research.active .star-2,
+.journal-research.active .star-3{
+    animation:spaceTwinkle 1.8s ease-in-out infinite;
+}
+
+.journal-research.active .star-2{animation-delay:.35s;}
+.journal-research.active .star-3{animation-delay:.7s;}
+
+@keyframes spaceTwinkle{
+    50%{opacity:.28;transform:scale(.72) rotate(14deg);}
+}
+
+/* ---------- Hero ---------- */
+
+.space-hero{
+    display:grid;
+    grid-template-columns:1.28fr .72fr;
+    align-items:center;
+    gap:25px;
+    margin-top:18px;
+}
+
+.space-hero-copy{
+    min-width:0;
+}
+
+.space-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#5e7d98;
+    font-family:"Courier New","Microsoft YaHei",monospace;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:.12em;
+}
+
+.space-live-dot{
+    width:8px;
+    height:8px;
+    border:2px solid var(--space-navy);
+    border-radius:50%;
+    background:#78c6aa;
+    box-shadow:0 0 0 0 rgba(120,198,170,.44);
+    animation:spaceLive 1.6s ease-out infinite;
+}
+
+@keyframes spaceLive{
+    70%{box-shadow:0 0 0 7px rgba(120,198,170,0);}
+}
+
+.space-hero h2{
+    margin:5px 0 0;
+    color:var(--space-navy);
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:34px;
+    line-height:1.12;
+    letter-spacing:.01em;
+}
+
+.space-hero h2::after{
+    content:"";
+    display:block;
+    width:390px;
+    max-width:74%;
+    height:9px;
+    margin-top:-4px;
+    border-radius:50%;
+    background:rgba(140,197,223,.43);
+}
+
+.space-lead{
+    max-width:760px;
+    margin:9px 0 0;
+    color:#5e6875;
+    font-size:11px;
+    line-height:1.55;
+}
+
+.space-lead b{
+    color:#294765;
+    font-weight:900;
+}
+
+.space-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.space-tags span{
+    padding:4px 7px;
+    border:1px solid rgba(38,64,90,.26);
+    border-radius:999px;
+    background:rgba(255,255,255,.69);
+    color:#536f89;
+    font-family:"Courier New",monospace;
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:.05em;
+}
+
+/* ---------- Satellite visual ---------- */
+
+.space-satellite-stage{
+    position:relative;
+    height:112px;
+    overflow:hidden;
+    border:1px solid rgba(48,76,104,.18);
+    border-radius:16px;
+    background:
+        radial-gradient(circle at 50% 115%,rgba(140,197,223,.33),transparent 42%),
+        linear-gradient(145deg,rgba(255,255,255,.67),rgba(230,244,250,.52));
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,.32);
+}
+
+.space-orbit{
+    position:absolute;
+    left:50%;
+    top:76%;
+    border:1px dashed rgba(53,83,114,.20);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+}
+
+.orbit-a{width:205px;height:78px;}
+.orbit-b{width:151px;height:57px;border-color:rgba(179,148,207,.25);}
+.orbit-c{width:98px;height:37px;border-style:solid;border-color:rgba(101,151,178,.20);}
+
+.journal-research.active .orbit-a{animation:orbitSpinA 12s linear infinite;}
+.journal-research.active .orbit-b{animation:orbitSpinB 9s linear infinite reverse;}
+
+@keyframes orbitSpinA{
+    to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+@keyframes orbitSpinB{
+    to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+.space-earth{
+    position:absolute;
+    left:50%;
+    bottom:-49px;
+    width:114px;
+    height:114px;
+    border:2px solid rgba(42,71,99,.28);
+    border-radius:50%;
+    transform:translateX(-50%);
+    background:
+        radial-gradient(circle at 35% 32%,rgba(255,255,255,.90),transparent 15%),
+        radial-gradient(circle at 62% 35%,rgba(170,211,180,.75) 0 13%,transparent 14%),
+        radial-gradient(circle at 37% 57%,rgba(170,211,180,.70) 0 17%,transparent 18%),
+        #b9dcec;
+    box-shadow:0 -7px 28px rgba(69,118,151,.16);
+}
+
+.space-satellite{
+    position:absolute;
+    left:51%;
+    top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    transform:translateX(-50%) rotate(-9deg);
+    filter:drop-shadow(3px 5px 0 rgba(38,57,79,.14));
+    z-index:3;
+}
+
+.journal-research.active .space-satellite{
+    animation:satelliteFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes satelliteFloat{
+    0%,100%{transform:translateX(-50%) translateY(0) rotate(-9deg);}
+    50%{transform:translateX(-50%) translateY(-6px) rotate(-5deg);}
+}
+
+.sat-body{
+    position:relative;
+    display:grid;
+    place-items:center;
+    width:35px;
+    height:31px;
+    border:2px solid var(--space-navy);
+    border-radius:5px;
+    background:#f7f2e8;
+    color:var(--space-navy);
+    font-family:"Courier New",monospace;
+    font-size:9px;
+    font-weight:900;
+}
+
+.sat-body i{
+    position:absolute;
+    left:5px;
+    top:5px;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#e8a4b7;
+}
+
+.sat-panel{
+    width:39px;
+    height:22px;
+    border:2px solid var(--space-navy);
+    background:
+        linear-gradient(90deg,transparent 48%,rgba(255,255,255,.6) 49% 52%,transparent 53%),
+        linear-gradient(rgba(255,255,255,.6) 48%,transparent 49% 52%,rgba(255,255,255,.6) 53%),
+        #8cc5df;
+    background-size:13px 100%,100% 11px,auto;
+}
+
+.sat-panel-left{border-radius:4px 1px 1px 4px;}
+.sat-panel-right{border-radius:1px 4px 4px 1px;}
+
+.sat-dish{
+    position:absolute;
+    right:-16px;
+    top:-12px;
+    width:18px;
+    height:13px;
+    border:2px solid var(--space-navy);
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:50% 50% 0 0;
+    transform:rotate(25deg);
+}
+
+.space-signal{
+    position:absolute;
+    right:22px;
+    top:18px;
+    border:1px solid rgba(62,100,129,.23);
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:50%;
+}
+
+.signal-1{width:34px;height:34px;}
+.signal-2{width:48px;height:48px;right:15px;top:11px;}
+
+.journal-research.active .space-signal{
+    animation:signalPulse 1.8s ease-out infinite;
+}
+.journal-research.active .signal-2{animation-delay:.45s;}
+
+@keyframes signalPulse{
+    0%{opacity:.8;transform:scale(.65);}
+    100%{opacity:0;transform:scale(1.18);}
+}
+
+.space-stage-label{
+    position:absolute;
+    left:11px;
+    bottom:8px;
+    padding:3px 6px;
+    border-radius:999px;
+    background:rgba(255,255,255,.72);
+    color:#667f96;
+    font-family:"Courier New",monospace;
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.09em;
+}
+
+/* ---------- Pipeline ---------- */
+
+.space-pipeline{
+    display:grid;
+    grid-template-columns:1fr 42px 1fr 42px 1fr;
+    align-items:stretch;
+    gap:8px;
+    margin-top:14px;
+}
+
+.space-module{
+    position:relative;
+    min-width:0;
+    height:249px;
+    padding:13px 13px 11px;
+    border:2px solid rgba(38,56,78,.62);
+    border-radius:6px 12px 7px 14px;
+    box-shadow:
+        6px 7px 0 rgba(35,53,83,.14),
+        inset 0 0 0 3px rgba(255,255,255,.36);
+    overflow:hidden;
+}
+
+.space-module::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-12px;
+    width:72px;
+    height:21px;
+    border:1px solid rgba(40,58,80,.10);
+    transform:translateX(-50%) rotate(-2deg);
+}
+
+.module-req{
+    background:#fde8ee;
+    transform:rotate(-.8deg);
+}
+
+.module-req::before{background:rgba(232,164,183,.76);}
+
+.module-design{
+    background:#eee9f8;
+    transform:rotate(.7deg);
+}
+
+.module-design::before{
+    background:rgba(185,173,221,.78);
+    transform:translateX(-50%) rotate(2deg);
+}
+
+.module-code{
+    background:#eaf4e6;
+    transform:rotate(-.6deg);
+}
+
+.module-code::before{background:rgba(170,207,166,.80);}
+
+.space-module-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:6px;
+}
+
+.space-mission-no{
+    color:#596f87;
+    font-family:"Courier New",monospace;
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:.08em;
+}
+
+.space-module-code{
+    display:inline-grid;
+    place-items:center;
+    min-height:22px;
+    padding:0 7px;
+    border:2px solid var(--space-navy);
+    border-radius:4px;
+    background:#fff;
+    color:var(--space-navy);
+    box-shadow:3px 3px 0 rgba(34,53,83,.14);
+    font-family:"Courier New",monospace;
+    font-size:8px;
+    font-weight:900;
+}
+
+.space-module h3{
+    margin:8px 0 4px;
+    color:#2c4360;
+    font-family:"Segoe Print","KaiTi","Microsoft YaHei",cursive;
+    font-size:17px;
+}
+
+.space-route{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    margin-bottom:7px;
+    padding:3px 7px;
+    border-radius:999px;
+    background:rgba(255,255,255,.68);
+    color:#61748a;
+    font-family:"Courier New","Microsoft YaHei",monospace;
+    font-size:7px;
+    font-weight:900;
+}
+
+.space-route i{
+    color:#d1a638;
+    font-style:normal;
+}
+
+.space-module > p{
+    margin:0 0 8px;
+    color:#5f6670;
+    font-size:9px;
+    line-height:1.48;
+}
+
+.space-achievement{
+    margin-top:6px;
+    padding:6px 7px;
+    border-left:3px solid #d07d95;
+    border-radius:0 5px 5px 0;
+    background:rgba(255,255,255,.59);
+}
+
+.space-achievement span{
+    display:block;
+    margin-bottom:2px;
+    color:#a75c74;
+    font-family:"Courier New","Microsoft YaHei",monospace;
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.08em;
+}
+
+.space-achievement b{
+    display:block;
+    color:#485463;
+    font-size:7px;
+    line-height:1.32;
+    font-weight:700;
+}
+
+.patent-achievement{
+    border-left-color:#d7ab35;
+}
+
+.patent-achievement span{color:#a37817;}
+
+.project-achievement{
+    border-left-color:#8b75b5;
+}
+
+.project-achievement span{color:#75619b;}
+
+.code-achievement{
+    border-left-color:#6c9f66;
+}
+
+.code-achievement span{color:#578651;}
+
+.space-design-map{
+    position:absolute;
+    left:13px;
+    right:13px;
+    bottom:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color:#756799;
+    font-family:"Courier New",monospace;
+    font-size:6px;
+    font-weight:900;
+}
+
+.space-design-map span{
+    padding:3px 5px;
+    border:1px dashed rgba(117,103,153,.38);
+    border-radius:4px;
+    background:rgba(255,255,255,.52);
+}
+
+.space-design-map i{
+    color:#c39b38;
+    font-style:normal;
+}
+
+.space-code-lines{
+    position:absolute;
+    left:13px;
+    right:13px;
+    bottom:11px;
+    display:grid;
+    gap:4px;
+}
+
+.space-code-lines i{
+    display:block;
+    height:4px;
+    border-radius:999px;
+    background:rgba(69,119,74,.24);
+}
+
+.space-code-lines i:nth-child(1){width:76%;}
+.space-code-lines i:nth-child(2){width:55%;}
+.space-code-lines i:nth-child(3){width:66%;}
+
+.journal-research.active .space-code-lines i{
+    animation:codeLineType 1.6s steps(8,end) infinite alternate;
+    transform-origin:left;
+}
+
+.journal-research.active .space-code-lines i:nth-child(2){animation-delay:.25s;}
+.journal-research.active .space-code-lines i:nth-child(3){animation-delay:.5s;}
+
+@keyframes codeLineType{
+    from{transform:scaleX(.22);}
+    to{transform:scaleX(1);}
+}
+
+/* ---------- Connectors ---------- */
+
+.space-connector{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color:#617b94;
+}
+
+.space-connector small{
+    font-family:"Courier New",monospace;
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.08em;
+    writing-mode:vertical-rl;
+}
+
+.connector-line{
+    position:relative;
+    width:27px;
+    height:2px;
+    overflow:hidden;
+    background:rgba(61,85,109,.20);
+}
+
+.connector-line i{
+    position:absolute;
+    left:-16px;
+    top:0;
+    width:14px;
+    height:100%;
+    background:#e0b540;
+}
+
+.journal-research.active .connector-line i{
+    animation:spaceTrace 1.2s linear infinite;
+}
+
+@keyframes spaceTrace{
+    to{left:31px;}
+}
+
+.space-connector b{
+    color:#d1a638;
+    font-family:Georgia,serif;
+    font-size:25px;
+    line-height:.7;
+    animation:spaceConnectorNudge 1.2s ease-in-out infinite;
+}
+
+@keyframes spaceConnectorNudge{
+    50%{transform:translateX(4px);}
+}
+
+/* ---------- Footer ---------- */
+
+.space-footer{
+    display:grid;
+    grid-template-columns:1.45fr .75fr;
+    align-items:center;
+    gap:13px;
+    margin-top:10px;
+}
+
+.space-academic-payload{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    min-width:0;
+}
+
+.payload-title{
+    color:#4e6780;
+    font-family:"Courier New",monospace;
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.09em;
+    white-space:nowrap;
+}
+
+.payload-chip{
+    padding:3px 6px;
+    border:1px solid rgba(43,65,89,.25);
+    border-radius:999px;
+    background:#fff;
+    color:#54697e;
+    font-family:"Courier New",monospace;
+    font-size:5px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.chip-paper{background:#fde8ee;}
+.chip-patent{background:#fff3c2;}
+.chip-project{background:#eee9f8;}
+.chip-code{background:#eaf4e6;}
+
+.space-lifecycle{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:5px;
+    color:#4c6680;
+    font-family:"Courier New",monospace;
+    font-size:6px;
+    font-weight:900;
+}
+
+.space-lifecycle span{
+    padding:3px 5px;
+    border:1px dashed rgba(68,95,122,.31);
+    border-radius:999px;
+    background:rgba(255,255,255,.63);
+}
+
+.space-lifecycle i{
+    color:#d1a638;
+    font-style:normal;
+}
+
+/* ---------- Entrance animations ---------- */
+
+.journal-research .space-module{
+    opacity:0;
+    filter:blur(4px);
+    transform:translateY(28px) scale(.95);
+}
+
+.journal-research.active .module-req{
+    animation:spaceModuleLaunch .66s .28s cubic-bezier(.16,.84,.24,1.12) forwards;
+}
+
+.journal-research.active .module-design{
+    animation:spaceModuleLaunch .66s .72s cubic-bezier(.16,.84,.24,1.12) forwards;
+}
+
+.journal-research.active .module-code{
+    animation:spaceModuleLaunch .66s 1.16s cubic-bezier(.16,.84,.24,1.12) forwards;
+}
+
+@keyframes spaceModuleLaunch{
+    0%{
+        opacity:0;
+        filter:blur(4px);
+        transform:translateY(28px) scale(.95);
+    }
+    72%{
+        opacity:1;
+        filter:none;
+        transform:translateY(-4px) scale(1.015);
+    }
+    100%{
+        opacity:1;
+        filter:none;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.journal-research .space-achievement{
+    opacity:0;
+    transform:translateX(-9px);
+}
+
+.journal-research.active .module-req .space-achievement:nth-of-type(1){
+    animation:spaceAchievementIn .4s .62s ease-out forwards;
+}
+.journal-research.active .module-req .space-achievement:nth-of-type(2){
+    animation:spaceAchievementIn .4s .78s ease-out forwards;
+}
+.journal-research.active .module-design .space-achievement{
+    animation:spaceAchievementIn .4s 1.03s ease-out forwards;
+}
+.journal-research.active .module-code .space-achievement{
+    animation:spaceAchievementIn .4s 1.48s ease-out forwards;
+}
+
+@keyframes spaceAchievementIn{
+    to{opacity:1;transform:none;}
+}
+
+.journal-research.active .payload-chip{
+    animation:payloadPop .5s cubic-bezier(.18,.9,.27,1.25) both;
+}
+
+.journal-research.active .payload-chip:nth-of-type(2){animation-delay:1.55s;}
+.journal-research.active .payload-chip:nth-of-type(3){animation-delay:1.68s;}
+.journal-research.active .payload-chip:nth-of-type(4){animation-delay:1.81s;}
+.journal-research.active .payload-chip:nth-of-type(5){animation-delay:1.94s;}
+
+@keyframes payloadPop{
+    from{opacity:0;transform:translateY(6px) scale(.88);}
+    to{opacity:1;transform:none;}
+}
+
+/* ---------- Mobile / WeChat ---------- */
+
+@media(max-width:900px){
+    .space-hero{
+        grid-template-columns:1fr;
+    }
+
+    .space-satellite-stage{
+        height:135px;
+    }
+
+    .space-pipeline{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .space-module{
+        height:auto;
+        min-height:225px;
+        transform:none !important;
+    }
+
+    .journal-research .space-module{
+        opacity:1;
+        filter:none;
+    }
+
+    .journal-research.active .space-module{
+        animation:none;
+    }
+
+    .space-connector{
+        flex-direction:row;
+        min-height:24px;
+    }
+
+    .space-connector small{
+        writing-mode:horizontal-tb;
+    }
+
+    .connector-line{
+        width:60px;
+    }
+
+    .space-connector b{
+        transform:rotate(90deg);
+        animation:none;
+    }
+
+    .space-footer{
+        grid-template-columns:1fr;
+    }
+
+    .space-academic-payload{
+        flex-wrap:wrap;
+    }
+
+    .space-lifecycle{
+        justify-content:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .space-achievement{
+        opacity:1 !important;
+        transform:none !important;
+    }
+
+    .space-decor .space-tape{
+        display:none;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    .journal-research *,
+    .journal-research *::before,
+    .journal-research *::after{
+        animation:none !important;
+        transition:none !important;
+    }
+
+    .journal-research .space-module,
+    .journal-research .space-achievement{
+        opacity:1 !important;
+        filter:none !important;
+        transform:none !important;
+    }
+}
