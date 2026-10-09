@@ -5475,3 +5475,156 @@ html{
         transform:none !important;
     }
 }
+
+/* ==================================================
+   PAGE 04 · TEXT HIERARCHY FIX
+   每张卡片：标题 → 技术 → 成果
+================================================== */
+
+.space-module{
+    padding-top:13px;
+}
+
+.space-module h3{
+    margin:9px 0 10px;
+}
+
+.space-card-section{
+    position:relative;
+    margin-top:8px;
+}
+
+.space-section-label{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-bottom:5px;
+    color:#516983;
+    font-family:"Courier New","Microsoft YaHei",monospace;
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:.10em;
+}
+
+.space-section-label::before{
+    content:"";
+    width:12px;
+    height:3px;
+    border-radius:999px;
+    background:#8cc5df;
+}
+
+.module-req .space-section-label::before{
+    background:#e8a4b7;
+}
+
+.module-design .space-section-label::before{
+    background:#a99bd1;
+}
+
+.module-code .space-section-label::before{
+    background:#7daf78;
+}
+
+.space-tech{
+    padding:8px 9px;
+    border:1px dashed rgba(55,80,106,.22);
+    border-radius:6px;
+    background:rgba(255,255,255,.43);
+}
+
+.space-tech p{
+    margin:0;
+    color:#56606d;
+    font-size:8px;
+    line-height:1.48;
+    font-weight:600;
+}
+
+.space-results{
+    margin-top:9px;
+}
+
+.space-results .space-section-label{
+    margin-bottom:3px;
+}
+
+.space-results .space-achievement{
+    margin-top:5px;
+}
+
+/* 成果区稍微紧凑，保证信息不拥挤 */
+.space-achievement{
+    padding:5px 7px;
+}
+
+.space-achievement span{
+    font-size:5.5px;
+}
+
+.space-achievement b{
+    font-size:6.7px;
+    line-height:1.28;
+}
+
+/* 软件设计底部追踪链下移 */
+.space-design-map{
+    bottom:10px;
+}
+
+/* 代码生成的装饰线下移 */
+.space-code-lines{
+    bottom:10px;
+}
+
+/* 页面进入时，技术块和成果块也分层进入 */
+.journal-research .space-tech,
+.journal-research .space-results{
+    opacity:0;
+    transform:translateY(7px);
+}
+
+.journal-research.active .module-req .space-tech{
+    animation:spaceTextLayerIn .35s .50s ease-out forwards;
+}
+.journal-research.active .module-req .space-results{
+    animation:spaceTextLayerIn .35s .66s ease-out forwards;
+}
+
+.journal-research.active .module-design .space-tech{
+    animation:spaceTextLayerIn .35s .94s ease-out forwards;
+}
+.journal-research.active .module-design .space-results{
+    animation:spaceTextLayerIn .35s 1.10s ease-out forwards;
+}
+
+.journal-research.active .module-code .space-tech{
+    animation:spaceTextLayerIn .35s 1.38s ease-out forwards;
+}
+.journal-research.active .module-code .space-results{
+    animation:spaceTextLayerIn .35s 1.54s ease-out forwards;
+}
+
+@keyframes spaceTextLayerIn{
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@media(max-width:900px){
+    .space-tech,
+    .space-results{
+        opacity:1 !important;
+        transform:none !important;
+        animation:none !important;
+    }
+
+    .space-tech p{
+        font-size:9px;
+    }
+
+    .space-achievement b{
+        font-size:8px;
+    }
+}
