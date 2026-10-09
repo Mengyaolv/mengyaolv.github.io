@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Mengyao AI Journal</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,6 +14,7 @@
         <div><span></span>04</div>
         <div><span></span>05</div>
         <div><span></span>06</div>
+        <div><span></span>07</div>
     </nav>
 
     <section class="page journal-page journal-profile">
@@ -122,7 +123,14 @@
                         <img src="assets/images/tanhuixingren.png" alt="碳惠星人校园低碳生活激励平台界面">
                         <div class="pixel-scan"></div>
                     </div>
-                    <div class="project-more pixel-more">PRESS START →</div>
+                    <div class="pixel-click-cue" aria-hidden="true">
+                        <span class="pixel-pointer">☞</span>
+                        <span class="pixel-click-copy">
+                            <b>CLICK TO PLAY!</b>
+                            <small>点击进入完整产品案例</small>
+                        </span>
+                    </div>
+                    <div class="project-more pixel-more">▶ OPEN CASE</div>
                 </a>
             </div>
 
@@ -224,6 +232,14 @@
                         </div>
                     </div>
 
+                    <div class="oriental-click-note" aria-hidden="true">
+                        <span class="oriental-click-icon">↗</span>
+                        <span>
+                            <b>点击查看完整项目案例</b>
+                            <small>VIEW FULL CASE STUDY</small>
+                        </span>
+                    </div>
+
                     <div class="project-more oriental-more">
                         进入观己 →
                     </div>
@@ -238,6 +254,110 @@
         </div>
     </section>
 
+    <section class="page journal-page journal-research">
+        <div class="paper journal-paper research-paper">
+            <div class="journal-decor research-decor" aria-hidden="true">
+                <span class="journal-sticker research-sticker">MASTER RESEARCH MAP</span>
+                <span class="research-star research-star-a">✦</span>
+                <span class="research-star research-star-b">✧</span>
+                <span class="research-orbit"></span>
+                <span class="research-rocket">➤</span>
+            </div>
+
+            <div class="page-label animate">04 / MASTER'S RESEARCH</div>
+
+            <div class="research-heading animate delay1">
+                <div class="research-kicker">AEROSPACE × AI SOFTWARE ENGINEERING</div>
+                <h2>航天背景下的 AI 软件工程</h2>
+                <p>
+                    将大语言模型与多智能体引入航天软件生命周期，
+                    从工程资料出发，贯通 <b>需求分析 → 软件设计 → 代码生成</b>。
+                </p>
+            </div>
+
+            <div class="research-pipeline animate delay2">
+
+                <article class="research-card research-card-req">
+                    <div class="research-card-top">
+                        <span class="research-step">01</span>
+                        <span class="research-icon">REQ</span>
+                    </div>
+                    <h3>需求分析</h3>
+                    <div class="research-flow-label">任务书 / 工程资料 → SRS</div>
+                    <p>
+                        分层知识约束 + 多智能体协同，
+                        辅助识别软件职责、生成需求并完成规范审查。
+                    </p>
+                    <div class="research-output">
+                        <span>论文在投</span>
+                        <b>大模型分层知识约束的航天软件需求分析</b>
+                    </div>
+                    <div class="research-output patent">
+                        <span>专利</span>
+                        <b>大模型辅助的星载数据管理软件需求分析方法及系统</b>
+                    </div>
+                </article>
+
+                <div class="research-link" aria-hidden="true">
+                    <span>TRACE</span>
+                    <i>→</i>
+                </div>
+
+                <article class="research-card research-card-design">
+                    <div class="research-card-top">
+                        <span class="research-step">02</span>
+                        <span class="research-icon">SDD</span>
+                    </div>
+                    <h3>软件设计</h3>
+                    <div class="research-flow-label">SRS → SDD</div>
+                    <p>
+                        将需求条目继续传递到模块、接口、数据处理流程、
+                        工作模式与异常处置，建立需求—设计可追踪关系。
+                    </p>
+                    <div class="research-output design-output">
+                        <span>研究内容二</span>
+                        <b>需求到设计的多智能体分析与生成</b>
+                    </div>
+                </article>
+
+                <div class="research-link" aria-hidden="true">
+                    <span>BUILD</span>
+                    <i>→</i>
+                </div>
+
+                <article class="research-card research-card-code">
+                    <div class="research-card-top">
+                        <span class="research-step">03</span>
+                        <span class="research-icon">&lt;/&gt;</span>
+                    </div>
+                    <h3>代码生成</h3>
+                    <div class="research-flow-label">需求 / 设计 → Code</div>
+                    <p>
+                        探索大模型在航天软件代码生成中的方法、
+                        基准评测与工程应用价值。
+                    </p>
+                    <div class="research-output code-output">
+                        <span>论文</span>
+                        <b>Using Large Language Models for Aerospace Code Generation</b>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="research-chain animate delay3">
+                <span>ENGINEERING FACTS</span>
+                <i>→</i>
+                <span>SRS</span>
+                <i>→</i>
+                <span>SDD</span>
+                <i>→</i>
+                <span>CODE</span>
+            </div>
+
+            <div class="page-number">04</div>
+        </div>
+    </section>
+
     <section class="page journal-page journal-thinking">
         <div class="paper journal-paper">
             <div class="journal-decor journal-decor-thinking" aria-hidden="true">
@@ -245,7 +365,7 @@
                 <span class="doodle doodle-bulb">☀</span>
                 <span class="doodle doodle-arrow">↘</span>
             </div>
-            <div class="page-label animate">04 / PRODUCT THINKING</div>
+            <div class="page-label animate">05 / PRODUCT THINKING</div>
             <div class="thinking-title animate delay1">AI 产品思考</div>
             <div class="thinking-cards">
                 <div class="think-card animate delay1">
@@ -261,7 +381,7 @@
                     <p>可信、可控、可解释，是 AI 产品稳定落地的基础。</p>
                 </div>
             </div>
-            <div class="page-number">04</div>
+            <div class="page-number">05</div>
         </div>
     </section>
 
@@ -273,7 +393,7 @@
                 <span class="doodle doodle-spark">✧</span>
                 <span class="doodle doodle-smile">☺</span>
             </div>
-            <div class="page-label animate">05 / LIFE & HOBBIES</div>
+            <div class="page-label animate">06 / LIFE & HOBBIES</div>
             <div class="hobby-title animate delay1">记录生活，保持创造。</div>
             <div class="hobby-gallery">
                 <div class="hobby-card animate delay1">
@@ -293,7 +413,7 @@
                 </div>
             </div>
             <div class="life-quote animate delay3">在生活中汲取灵感，<br>在创造中实现自我。</div>
-            <div class="page-number">05</div>
+            <div class="page-number">06</div>
         </div>
     </section>
 
@@ -308,7 +428,7 @@
                 <span class="doodle doodle-contact-star">✦</span>
             </div>
 
-            <div class="page-label animate">06 / CONTACT</div>
+            <div class="page-label animate">07 / CONTACT</div>
             <div class="contact-title animate delay1">期待连接未来</div>
             <div class="contact-sub animate delay1">Let's build something meaningful together.</div>
 
@@ -333,7 +453,7 @@
                 
             </div>
 
-            <div class="page-number">06</div>
+            <div class="page-number">07</div>
         </div>
     </section>
 
