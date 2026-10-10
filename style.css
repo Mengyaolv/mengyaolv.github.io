@@ -5692,3 +5692,70 @@ html{
         font-size:8.5px;
     }
 }
+
+
+/* ==================================================
+   PAGE 04 · READABILITY PATCH V3
+   仅放大「技术 / 成果」字号，保留内容、配色与动画
+================================================== */
+.journal-research .space-module {
+    height: 295px;
+}
+.journal-research .space-module .space-section-label {
+    margin-bottom: 6px;
+    font-size: 10px;
+    line-height: 1.25;
+    letter-spacing: .025em;
+}
+.journal-research .space-tech {
+    margin-top: 10px;
+    padding: 8px 9px;
+}
+.journal-research .space-tech p {
+    font-size: 12px;
+    line-height: 1.48;
+    font-weight: 650;
+    color: #34475a;
+}
+.journal-research .space-results {
+    margin-top: 9px;
+}
+.journal-research .space-results .space-achievement {
+    margin-top: 5px;
+    padding: 6px 8px;
+}
+.journal-research .space-results .space-achievement span {
+    margin-bottom: 3px;
+    font-size: 9px;
+    line-height: 1.25;
+}
+.journal-research .space-results .space-achievement b {
+    font-size: 11px;
+    line-height: 1.38;
+    overflow-wrap: anywhere;
+}
+/* 两条成果在同一张卡片中，避免纵向间距过大 */
+.journal-research .module-req .space-results {
+    margin-top: 8px;
+}
+.journal-research .module-req .space-results .space-achievement {
+    margin-top: 4px;
+}
+/* 不改变研究卡片动画与结构 */
+@media (max-width: 900px) {
+    .journal-research .space-module {
+        height: auto;
+        min-height: 240px;
+    }
+    .journal-research .space-tech p {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+    .journal-research .space-results .space-achievement span {
+        font-size: 10px;
+    }
+    .journal-research .space-results .space-achievement b {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+}
